@@ -109,6 +109,12 @@ wxMessageDialog::~wxMessageDialog()
 
 int wxMessageDialog::ShowModal()
 {
+    // break the mouse capture as it would interfere with modal dialog (see
+    // wxDialog::ShowModal)
+    wxWindow * const win = wxWindow::GetCapture();
+    if ( win )
+        win->GTKReleaseMouseAndNotify();
+
     // This should be necessary, but otherwise the
     // parent TLW will disappear..
     if (m_parent)

@@ -2205,6 +2205,24 @@ void gtk_window_style_set_callback( GtkWidget *widget,
     }
 }
 
+//-----------------------------------------------------------------------------
+// "grab_broken" 
+//-----------------------------------------------------------------------------
+
+static void
+gtk_window_grab_broken( GtkWidget *m_widget,
+                        GdkEventGrabBroken *event,
+                        wxWindow *win )
+{
+    // Mouse capture has been lost involuntarily, notify the application
+    if( !event->keyboard && win && wxWindow::GetCapture() == win )
+    {
+        wxMouseCaptureLostEvent evt( win->GetId() );
+        evt.SetEventObject( win );
+        win->GetEventHandler()->ProcessEvent( evt );
+    }
+}
+
 } // extern "C"
 
 // Connect/disconnect style-set
@@ -2625,6 +2643,16 @@ void wxWindowGTK::PostCreation()
         // Catch native resize events
         g_signal_connect (m_wxwindow, "size_allocate",
                           G_CALLBACK (gtk_window_size_callback), this);
+        // Make sure we can notify the app when mouse capture is lost
+        g_signal_connect (m_wxwindow, "grab_broken_event",
+                          G_CALLBACK (gtk_window_grab_broken), this);
+    }
+
+    if ( connect_widget != m_wxwindow )
+    {
+        // Make sure we can notify app code when mouse capture is lost
+        g_signal_connect (connect_widget, "grab_broken_event",
+                        G_CALLBACK (gtk_window_grab_broken), this);
     }
 
     if (GTK_IS_COMBO(m_widget))
@@ -4221,6 +4249,14 @@ void wxWindowGTK::DoReleaseMouse()
         return;
 
     gdk_pointer_ungrab ( (guint32)GDK_CURRENT_TIME );
+}
+
+void wxWindowGTK::GTKReleaseMouseAndNotify()
+{
+    DoReleaseMouse();
+    wxMouseCaptureLostEvent evt(GetId());
+    evt.SetEventObject( this );
+    GetEventHandler()->ProcessEvent( evt );
 }
 
 /* static */

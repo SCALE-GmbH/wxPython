@@ -186,6 +186,10 @@ public:
     static wxLayoutDirection GTKGetLayout(GtkWidget *widget);
     static void GTKSetLayout(GtkWidget *widget, wxLayoutDirection dir);
 
+    // This is called when capture is taken from the window. It will 
+    // fire off capture lost events.
+    void GTKReleaseMouseAndNotify();
+
 protected:
     // Override GTKWidgetNeedsMnemonic and return true if your
     // needs to set its mnemonic widget, such as for a 
