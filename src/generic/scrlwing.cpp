@@ -1503,7 +1503,7 @@ bool wxScrolledWindow::Create(wxWindow *parent,
     MacSetClipChildren( true ) ;
 #endif
 
-    bool ok = wxPanel::Create(parent, id, pos, size, style|wxHSCROLL|wxVSCROLL, name);
+    bool ok = wxPanel::Create(parent, id, pos, size, style & ~(wxHSCROLL|wxVSCROLL), name);
 
     return ok;
 }

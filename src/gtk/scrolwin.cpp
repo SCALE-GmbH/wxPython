@@ -179,3 +179,47 @@ void wxScrollHelperNative::Scroll( int x_pos, int y_pos )
     DoScroll(wxHORIZONTAL, x_pos, m_xScrollPixelsPerLine, &m_xScrollPosition);
     DoScroll(wxVERTICAL, y_pos, m_yScrollPixelsPerLine, &m_yScrollPosition);
 }
+
+
+void wxScrollHelperNative::ShowScrollbars(
+    wxScrollbarVisibility horz, wxScrollbarVisibility vert)
+{
+    wxASSERT_MSG( (m_win != NULL), wxT("no window for ShowScrollbars") );
+    WXWidget gtk_window = m_win->GetHandle();
+    wxASSERT_MSG( gtk_window != NULL, wxT("invalid window for ShowScrollbars") );
+
+    GtkPolicyType horizontal_policy, vertical_policy;
+
+    switch (horz) {
+        case wxSHOW_SB_NEVER:
+            horizontal_policy = GTK_POLICY_NEVER;
+            break;
+        case wxSHOW_SB_DEFAULT:
+            horizontal_policy = GTK_POLICY_AUTOMATIC;
+            break;
+        case wxSHOW_SB_ALWAYS:
+            horizontal_policy = GTK_POLICY_ALWAYS;
+            break;
+        default:
+            wxFAIL_MSG( wxT("invalid horizontal scrollbar policy value") );
+    }
+
+    switch (vert) {
+        case wxSHOW_SB_NEVER:
+            vertical_policy = GTK_POLICY_NEVER;
+            break;
+        case wxSHOW_SB_DEFAULT:
+            vertical_policy = GTK_POLICY_AUTOMATIC;
+            break;
+        case wxSHOW_SB_ALWAYS:
+            vertical_policy = GTK_POLICY_ALWAYS;
+            break;
+        default:
+            wxFAIL_MSG( wxT("invalid vertical scrollbar policy value") );
+    }
+
+    if (gtk_window) {
+        gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(gtk_window),
+                horizontal_policy, vertical_policy);
+    }
+}

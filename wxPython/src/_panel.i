@@ -21,6 +21,13 @@
 //---------------------------------------------------------------------------
 %newgroup
 
+enum wxScrollbarVisibility
+{
+    wxSHOW_SB_NEVER, // never show the scrollbar at all
+    wxSHOW_SB_DEFAULT, // show scrollbar only if it is needed
+    wxSHOW_SB_ALWAYS // always show scrollbar, even if not needed
+};
+
 
 MustHaveApp(wxPanel);
 
@@ -141,12 +148,17 @@ public:
     // actually scroll a non-constant distance
     virtual void EnableScrolling(bool x_scrolling, bool y_scrolling);
 
-
     DocDeclAStr( 
         virtual void, GetViewStart(int *OUTPUT, int *OUTPUT) const,
         "GetViewStart() -> (x,y)",
         "Get the view start", "");
-    
+
+    DocDeclAStr(
+        void,
+        ShowScrollbars(wxScrollbarVisibility horz, wxScrollbarVisibility vert),
+        "ShowScrollbars(ScrollbarVisibility horz, ScrollbarVisibility vert)",
+        "Set visibility of scrollbars.", "");
+
     // Set the scale factor, used in PrepareDC
     void SetScale(double xs, double ys);
     double GetScaleX() const;

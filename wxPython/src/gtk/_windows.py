@@ -55,6 +55,9 @@ import _core
 wx = _core 
 #---------------------------------------------------------------------------
 
+SHOW_SB_NEVER = _windows_.SHOW_SB_NEVER
+SHOW_SB_DEFAULT = _windows_.SHOW_SB_DEFAULT
+SHOW_SB_ALWAYS = _windows_.SHOW_SB_ALWAYS
 class Panel(_core.Window):
     """Proxy of C++ Panel class"""
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc='The membership flag')
@@ -197,6 +200,14 @@ class ScrolledWindow(Panel):
         Get the view start
         """
         return _windows_.ScrolledWindow_GetViewStart(*args, **kwargs)
+
+    def ShowScrollbars(*args, **kwargs):
+        """
+        ShowScrollbars(ScrollbarVisibility horz, ScrollbarVisibility vert)
+
+        Set visibility of scrollbars.
+        """
+        return _windows_.ScrolledWindow_ShowScrollbars(*args, **kwargs)
 
     def SetScale(*args, **kwargs):
         """SetScale(self, double xs, double ys)"""

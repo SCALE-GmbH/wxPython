@@ -29,6 +29,9 @@ public:
     virtual void AdjustScrollbars();
     virtual void Scroll(int x, int y);
 
+    void ShowScrollbars(wxScrollbarVisibility horz,
+                        wxScrollbarVisibility vert);
+
 protected:
     // this does (each) half of AdjustScrollbars() work
     void DoAdjustScrollbar(GtkRange* range,
