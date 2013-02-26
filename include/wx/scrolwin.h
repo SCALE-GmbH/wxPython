@@ -277,6 +277,8 @@ protected:                                                                    \
     #include "wx/gtk/scrolwin.h"
 #elif defined(__WXGTK__) && !defined(__WXUNIVERSAL__)
     #include "wx/gtk1/scrolwin.h"
+#elif defined(__WXMSW__) && !defined(__WXUNIVERSAL__)
+    #include "wx/msw/scrolwin.h"
 #else
     typedef wxScrollHelper wxScrollHelperNative;
 #endif
