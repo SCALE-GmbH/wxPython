@@ -3093,6 +3093,69 @@ SOURCE=..\..\src\msw\scrolbar.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\src\msw\scrolwin.cpp
+
+!IF  "$(CFG)" == "core - Win32 DLL Universal Unicode Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "core - Win32 DLL Universal Unicode Debug"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "core - Win32 DLL Universal Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "core - Win32 DLL Universal Debug"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "core - Win32 DLL Unicode Release"
+
+
+!ELSEIF  "$(CFG)" == "core - Win32 DLL Unicode Debug"
+
+
+!ELSEIF  "$(CFG)" == "core - Win32 DLL Release"
+
+
+!ELSEIF  "$(CFG)" == "core - Win32 DLL Debug"
+
+
+!ELSEIF  "$(CFG)" == "core - Win32 Universal Unicode Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "core - Win32 Universal Unicode Debug"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "core - Win32 Universal Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "core - Win32 Universal Debug"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "core - Win32 Unicode Release"
+
+
+!ELSEIF  "$(CFG)" == "core - Win32 Unicode Debug"
+
+
+!ELSEIF  "$(CFG)" == "core - Win32 Release"
+
+
+!ELSEIF  "$(CFG)" == "core - Win32 Debug"
+
+
+!ENDIF
+
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\src\msw\settings.cpp
 # End Source File
 # Begin Source File
@@ -8653,6 +8716,10 @@ SOURCE=..\..\include\wx\access.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\include\wx\propgrid\advprops.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\include\wx\anidecod.h
 # End Source File
 # Begin Source File
@@ -8893,6 +8960,10 @@ SOURCE=..\..\include\wx\dragimag.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\include\wx\propgrid\editors.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\include\wx\effects.h
 # End Source File
 # Begin Source File
@@ -8902,6 +8973,10 @@ SOURCE=..\..\include\wx\encinfo.h
 # Begin Source File
 
 SOURCE=..\..\include\wx\evtloop.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\wx\propgrid\extras.h
 # End Source File
 # Begin Source File
 
@@ -9097,6 +9172,10 @@ SOURCE=..\..\include\wx\listctrl.h
 # End Source File
 # Begin Source File
 
+SOURCE=..\..\include\wx\propgrid\manager.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\..\include\wx\matrix.h
 # End Source File
 # Begin Source File
@@ -9138,6 +9217,10 @@ SOURCE=..\..\include\wx\numdlg.h
 # Begin Source File
 
 SOURCE=..\..\include\wx\odcombo.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\wx\propgrid\odcombo.h
 # End Source File
 # Begin Source File
 
@@ -9190,6 +9273,14 @@ SOURCE=..\..\include\wx\progdlg.h
 # Begin Source File
 
 SOURCE=..\..\include\wx\propdlg.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\wx\propgrid\propgrid.h
+# End Source File
+# Begin Source File
+
+SOURCE=..\..\include\wx\propgrid\props.h
 # End Source File
 # Begin Source File
 

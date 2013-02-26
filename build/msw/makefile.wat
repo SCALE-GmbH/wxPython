@@ -200,6 +200,14 @@ ____MONOLIB_GUI_SRC_FILENAMES_OBJECTS =  &
 	$(OBJS)\monodll_auibook.obj &
 	$(OBJS)\monodll_tabmdi.obj &
 	$(OBJS)\monodll_auibar.obj &
+	$(OBJS)\monodll_advprops.obj &
+	$(OBJS)\monodll_editors.obj &
+	$(OBJS)\monodll_extras.obj &
+	$(OBJS)\monodll_manager.obj &
+	$(OBJS)\monodll_propgrid_odcombo.obj &
+	$(OBJS)\monodll_propgrid.obj &
+	$(OBJS)\monodll_props.obj &
+	$(OBJS)\monodll_xh_propgrid.obj &
 	$(OBJS)\monodll_richtextctrl.obj &
 	$(OBJS)\monodll_richtextbuffer.obj &
 	$(OBJS)\monodll_richtextstyles.obj &
@@ -296,6 +304,7 @@ ____CORE_SRC_FILENAMES_OBJECTS =  &
 	$(OBJS)\monodll_msw_radiobox.obj &
 	$(OBJS)\monodll_msw_radiobut.obj &
 	$(OBJS)\monodll_msw_scrolbar.obj &
+	$(OBJS)\monodll_scrolwin.obj &
 	$(OBJS)\monodll_slider95.obj &
 	$(OBJS)\monodll_msw_spinbutt.obj &
 	$(OBJS)\monodll_spinctrl.obj &
@@ -681,7 +690,7 @@ ____ADVANCED_SRC_FILENAMES_OBJECTS =  &
 	$(OBJS)\monodll_helpext.obj &
 	$(OBJS)\monodll_hyperlink.obj &
 	$(OBJS)\monodll_laywin.obj &
-	$(OBJS)\monodll_odcombo.obj &
+	$(OBJS)\monodll_generic_odcombo.obj &
 	$(OBJS)\monodll_propdlg.obj &
 	$(OBJS)\monodll_sashwin.obj &
 	$(OBJS)\monodll_splash.obj &
@@ -710,7 +719,7 @@ ____ADVANCED_SRC_FILENAMES_OBJECTS =  &
 	$(OBJS)\monodll_helpext.obj &
 	$(OBJS)\monodll_hyperlink.obj &
 	$(OBJS)\monodll_laywin.obj &
-	$(OBJS)\monodll_odcombo.obj &
+	$(OBJS)\monodll_generic_odcombo.obj &
 	$(OBJS)\monodll_propdlg.obj &
 	$(OBJS)\monodll_sashwin.obj &
 	$(OBJS)\monodll_splash.obj &
@@ -830,6 +839,14 @@ ____MONOLIB_GUI_SRC_FILENAMES_1_OBJECTS =  &
 	$(OBJS)\monolib_auibook.obj &
 	$(OBJS)\monolib_tabmdi.obj &
 	$(OBJS)\monolib_auibar.obj &
+	$(OBJS)\monolib_advprops.obj &
+	$(OBJS)\monolib_editors.obj &
+	$(OBJS)\monolib_extras.obj &
+	$(OBJS)\monolib_manager.obj &
+	$(OBJS)\monolib_propgrid_odcombo.obj &
+	$(OBJS)\monolib_propgrid.obj &
+	$(OBJS)\monolib_props.obj &
+	$(OBJS)\monolib_xh_propgrid.obj &
 	$(OBJS)\monolib_richtextctrl.obj &
 	$(OBJS)\monolib_richtextbuffer.obj &
 	$(OBJS)\monolib_richtextstyles.obj &
@@ -926,6 +943,7 @@ ____CORE_SRC_FILENAMES_1_OBJECTS =  &
 	$(OBJS)\monolib_msw_radiobox.obj &
 	$(OBJS)\monolib_msw_radiobut.obj &
 	$(OBJS)\monolib_msw_scrolbar.obj &
+	$(OBJS)\monolib_scrolwin.obj &
 	$(OBJS)\monolib_slider95.obj &
 	$(OBJS)\monolib_msw_spinbutt.obj &
 	$(OBJS)\monolib_spinctrl.obj &
@@ -1311,7 +1329,7 @@ ____ADVANCED_SRC_FILENAMES_1_OBJECTS =  &
 	$(OBJS)\monolib_helpext.obj &
 	$(OBJS)\monolib_hyperlink.obj &
 	$(OBJS)\monolib_laywin.obj &
-	$(OBJS)\monolib_odcombo.obj &
+	$(OBJS)\monolib_generic_odcombo.obj &
 	$(OBJS)\monolib_propdlg.obj &
 	$(OBJS)\monolib_sashwin.obj &
 	$(OBJS)\monolib_splash.obj &
@@ -1340,7 +1358,7 @@ ____ADVANCED_SRC_FILENAMES_1_OBJECTS =  &
 	$(OBJS)\monolib_helpext.obj &
 	$(OBJS)\monolib_hyperlink.obj &
 	$(OBJS)\monolib_laywin.obj &
-	$(OBJS)\monolib_odcombo.obj &
+	$(OBJS)\monolib_generic_odcombo.obj &
 	$(OBJS)\monolib_propdlg.obj &
 	$(OBJS)\monolib_sashwin.obj &
 	$(OBJS)\monolib_splash.obj &
@@ -1475,6 +1493,7 @@ ____CORE_SRC_FILENAMES_2_OBJECTS =  &
 	$(OBJS)\coredll_msw_radiobox.obj &
 	$(OBJS)\coredll_msw_radiobut.obj &
 	$(OBJS)\coredll_msw_scrolbar.obj &
+	$(OBJS)\coredll_scrolwin.obj &
 	$(OBJS)\coredll_slider95.obj &
 	$(OBJS)\coredll_msw_spinbutt.obj &
 	$(OBJS)\coredll_spinctrl.obj &
@@ -1938,6 +1957,7 @@ ____CORE_SRC_FILENAMES_3_OBJECTS =  &
 	$(OBJS)\corelib_msw_radiobox.obj &
 	$(OBJS)\corelib_msw_radiobut.obj &
 	$(OBJS)\corelib_msw_scrolbar.obj &
+	$(OBJS)\corelib_scrolwin.obj &
 	$(OBJS)\corelib_slider95.obj &
 	$(OBJS)\corelib_msw_spinbutt.obj &
 	$(OBJS)\corelib_spinctrl.obj &
@@ -2614,6 +2634,24 @@ __richtextlib___depname = &
 !endif
 !endif
 !endif
+__propgriddll___depname =
+!ifeq MONOLITHIC 0
+!ifeq SHARED 1
+!ifeq USE_PROPGRID 1
+__propgriddll___depname = &
+	$(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid_wat$(VENDORTAG).dll
+!endif
+!endif
+!endif
+__propgridlib___depname =
+!ifeq MONOLITHIC 0
+!ifeq SHARED 0
+!ifeq USE_PROPGRID 1
+__propgridlib___depname = &
+	$(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid.lib
+!endif
+!endif
+!endif
 __gldll___depname =
 !ifeq SHARED 1
 !ifeq USE_GUI 1
@@ -2797,8 +2835,8 @@ MAKEARGS = CC="$(CC)" CXX="$(CXX)" CFLAGS="$(CFLAGS)" CXXFLAGS="$(CXXFLAGS)" &
 	DEBUG_INFO="$(DEBUG_INFO)" DEBUG_FLAG="$(DEBUG_FLAG)" &
 	MONOLITHIC="$(MONOLITHIC)" USE_GUI="$(USE_GUI)" USE_HTML="$(USE_HTML)" &
 	USE_MEDIA="$(USE_MEDIA)" USE_XRC="$(USE_XRC)" USE_AUI="$(USE_AUI)" &
-	USE_RICHTEXT="$(USE_RICHTEXT)" USE_OPENGL="$(USE_OPENGL)" &
-	USE_ODBC="$(USE_ODBC)" USE_QA="$(USE_QA)" &
+	USE_PROPGRID="$(USE_PROPGRID)" USE_RICHTEXT="$(USE_RICHTEXT)" &
+	USE_OPENGL="$(USE_OPENGL)" USE_ODBC="$(USE_ODBC)" USE_QA="$(USE_QA)" &
 	USE_EXCEPTIONS="$(USE_EXCEPTIONS)" USE_RTTI="$(USE_RTTI)" &
 	USE_THREADS="$(USE_THREADS)" USE_CAIRO="$(USE_CAIRO)" &
 	USE_GDIPLUS="$(USE_GDIPLUS)" OFFICIAL_BUILD="$(OFFICIAL_BUILD)" &
@@ -3943,6 +3981,45 @@ RICHTEXTLIB_OBJECTS =  &
 	$(OBJS)\richtextlib_richtextsymboldlg.obj &
 	$(OBJS)\richtextlib_richtextstyledlg.obj &
 	$(OBJS)\richtextlib_richtextprint.obj
+PROPGRIDDLL_CXXFLAGS = -bd $(__DEBUGINFO) $(__OPTIMIZEFLAG) $(__THREADSFLAG) &
+	$(__RUNTIME_LIBS) -d__WXMSW__ $(__WXUNIV_DEFINE_p) $(__DEBUG_DEFINE_p) &
+	$(__NDEBUG_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) $(__RTTI_DEFINE_p) &
+	$(__THREAD_DEFINE_p) $(__UNICODE_DEFINE_p) $(__GFXCTX_DEFINE_p) &
+	-i=$(SETUPHDIR) -i=..\..\include $(____CAIRO_INCLUDEDIR_FILENAMES) -wx &
+	-wcd=549 -wcd=656 -wcd=657 -wcd=667 -dWXBUILDING -i=..\..\src\tiff &
+	-i=..\..\src\jpeg -i=..\..\src\png -i=..\..\src\zlib -i=..\..\src\regex &
+	-i=..\..\src\expat\lib -dWXUSINGDLL -dWXMAKINGDLL_PROPGRID &
+	/fh=$(OBJS)\wxprec_propgriddll.pch $(__RTTIFLAG) $(__EXCEPTIONSFLAG) &
+	$(CPPFLAGS) $(CXXFLAGS)
+PROPGRIDDLL_OBJECTS =  &
+	$(OBJS)\propgriddll_dummy.obj &
+	$(OBJS)\propgriddll_advprops.obj &
+	$(OBJS)\propgriddll_editors.obj &
+	$(OBJS)\propgriddll_extras.obj &
+	$(OBJS)\propgriddll_manager.obj &
+	$(OBJS)\propgriddll_odcombo.obj &
+	$(OBJS)\propgriddll_propgrid.obj &
+	$(OBJS)\propgriddll_props.obj &
+	$(OBJS)\propgriddll_xh_propgrid.obj
+PROPGRIDLIB_CXXFLAGS = $(__DEBUGINFO) $(__OPTIMIZEFLAG) $(__THREADSFLAG) &
+	$(__RUNTIME_LIBS) -d__WXMSW__ $(__WXUNIV_DEFINE_p) $(__DEBUG_DEFINE_p) &
+	$(__NDEBUG_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) $(__RTTI_DEFINE_p) &
+	$(__THREAD_DEFINE_p) $(__UNICODE_DEFINE_p) $(__GFXCTX_DEFINE_p) &
+	-i=$(SETUPHDIR) -i=..\..\include $(____CAIRO_INCLUDEDIR_FILENAMES) -wx &
+	-wcd=549 -wcd=656 -wcd=657 -wcd=667 -dWXBUILDING -i=..\..\src\tiff &
+	-i=..\..\src\jpeg -i=..\..\src\png -i=..\..\src\zlib -i=..\..\src\regex &
+	-i=..\..\src\expat\lib /fh=$(OBJS)\wxprec_propgridlib.pch $(__RTTIFLAG) &
+	$(__EXCEPTIONSFLAG) $(CPPFLAGS) $(CXXFLAGS)
+PROPGRIDLIB_OBJECTS =  &
+	$(OBJS)\propgridlib_dummy.obj &
+	$(OBJS)\propgridlib_advprops.obj &
+	$(OBJS)\propgridlib_editors.obj &
+	$(OBJS)\propgridlib_extras.obj &
+	$(OBJS)\propgridlib_manager.obj &
+	$(OBJS)\propgridlib_odcombo.obj &
+	$(OBJS)\propgridlib_propgrid.obj &
+	$(OBJS)\propgridlib_props.obj &
+	$(OBJS)\propgridlib_xh_propgrid.obj
 GLDLL_CXXFLAGS = -bd $(__DEBUGINFO) $(__OPTIMIZEFLAG) $(__THREADSFLAG) &
 	$(__RUNTIME_LIBS) -d__WXMSW__ $(__WXUNIV_DEFINE_p) $(__DEBUG_DEFINE_p) &
 	$(__NDEBUG_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) $(__RTTI_DEFINE_p) &
@@ -3977,7 +4054,7 @@ $(OBJS) :
 
 ### Targets: ###
 
-all : .SYMBOLIC setup_h $(LIBDIRNAME)\wxregex$(WXUNICODEFLAG)$(WXDEBUGFLAG).lib $(LIBDIRNAME)\wxzlib$(WXDEBUGFLAG).lib $(__wxpng___depname) $(__wxjpeg___depname) $(__wxtiff___depname) $(LIBDIRNAME)\wxexpat$(WXDEBUGFLAG).lib $(__monodll___depname) $(__monolib___depname) $(__basedll___depname) $(__baselib___depname) $(__netdll___depname) $(__netlib___depname) $(__coredll___depname) $(__corelib___depname) $(__advdll___depname) $(__advlib___depname) $(__mediadll___depname) $(__medialib___depname) $(__odbcdll___depname) $(__odbclib___depname) $(__dbgriddll___depname) $(__dbgridlib___depname) $(__htmldll___depname) $(__htmllib___depname) $(__qadll___depname) $(__qalib___depname) $(__xmldll___depname) $(__xmllib___depname) $(__xrcdll___depname) $(__xrclib___depname) $(__auidll___depname) $(__auilib___depname) $(__richtextdll___depname) $(__richtextlib___depname) $(__gldll___depname) $(__gllib___depname) build_cfg_file
+all : .SYMBOLIC setup_h $(LIBDIRNAME)\wxregex$(WXUNICODEFLAG)$(WXDEBUGFLAG).lib $(LIBDIRNAME)\wxzlib$(WXDEBUGFLAG).lib $(__wxpng___depname) $(__wxjpeg___depname) $(__wxtiff___depname) $(LIBDIRNAME)\wxexpat$(WXDEBUGFLAG).lib $(__monodll___depname) $(__monolib___depname) $(__basedll___depname) $(__baselib___depname) $(__netdll___depname) $(__netlib___depname) $(__coredll___depname) $(__corelib___depname) $(__advdll___depname) $(__advlib___depname) $(__mediadll___depname) $(__medialib___depname) $(__odbcdll___depname) $(__odbclib___depname) $(__dbgriddll___depname) $(__dbgridlib___depname) $(__htmldll___depname) $(__htmllib___depname) $(__qadll___depname) $(__qalib___depname) $(__xmldll___depname) $(__xmllib___depname) $(__xrcdll___depname) $(__xrclib___depname) $(__auidll___depname) $(__auilib___depname) $(__richtextdll___depname) $(__richtextlib___depname) $(__propgriddll___depname) $(__propgridlib___depname) $(__gldll___depname) $(__gllib___depname) build_cfg_file
 
 clean : .SYMBOLIC 
 	-if exist $(OBJS)\*.obj del $(OBJS)\*.obj
@@ -4033,6 +4110,9 @@ clean : .SYMBOLIC
 	-if exist $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_richtext_wat$(VENDORTAG).dll del $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_richtext_wat$(VENDORTAG).dll
 	-if exist $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_richtext.lib del $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_richtext.lib
 	-if exist $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_richtext.lib del $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_richtext.lib
+	-if exist $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid_wat$(VENDORTAG).dll del $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid_wat$(VENDORTAG).dll
+	-if exist $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid.lib del $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid.lib
+	-if exist $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid.lib del $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid.lib
 	-if exist $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl_wat$(VENDORTAG).dll del $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl_wat$(VENDORTAG).dll
 	-if exist $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl.lib del $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl.lib
 	-if exist $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl.lib del $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_gl.lib
@@ -4494,6 +4574,36 @@ $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXD
 	@%create $(OBJS)\richtextlib.lbc
 	@for %i in ($(RICHTEXTLIB_OBJECTS)) do @%append $(OBJS)\richtextlib.lbc +%i
 	wlib -q -p4096 -n -b $^@ @$(OBJS)\richtextlib.lbc
+!endif
+!endif
+!endif
+
+!ifeq MONOLITHIC 0
+!ifeq SHARED 1
+!ifeq USE_PROPGRID 1
+$(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid_wat$(VENDORTAG).dll :  $(PROPGRIDDLL_OBJECTS) $(__wxtiff___depname) $(__wxjpeg___depname) $(__wxpng___depname) $(LIBDIRNAME)\wxexpat$(WXDEBUGFLAG).lib $(LIBDIRNAME)\wxzlib$(WXDEBUGFLAG).lib $(LIBDIRNAME)\wxregex$(WXUNICODEFLAG)$(WXDEBUGFLAG).lib $(OBJS)\propgriddll_version.res $(__advdll___depname) $(__coredll___depname) $(__basedll___depname)
+	@%create $(OBJS)\propgriddll.lbc
+	@%append $(OBJS)\propgriddll.lbc option quiet
+	@%append $(OBJS)\propgriddll.lbc name $^@
+	@%append $(OBJS)\propgriddll.lbc option caseexact
+	@%append $(OBJS)\propgriddll.lbc  $(__DEBUGINFO_3)  libpath $(LIBDIRNAME) $(____CAIRO_LIBDIR_FILENAMES) $(LDFLAGS)
+	@for %i in ($(PROPGRIDDLL_OBJECTS)) do @%append $(OBJS)\propgriddll.lbc file %i
+	@for %i in ( $(__LIB_TIFF_p) $(__LIB_JPEG_p) $(__LIB_PNG_p)  wxzlib$(WXDEBUGFLAG).lib  wxregex$(WXUNICODEFLAG)$(WXDEBUGFLAG).lib wxexpat$(WXDEBUGFLAG).lib $(EXTRALIBS_FOR_BASE)  $(__GDIPLUS_LIB_p) $(__CAIRO_LIB_p) kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_adv.lib $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_core.lib $(LIBDIRNAME)\wxbase$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR).lib) do @%append $(OBJS)\propgriddll.lbc library %i
+	@%append $(OBJS)\propgriddll.lbc option resource=$(OBJS)\propgriddll_version.res
+	@%append $(OBJS)\propgriddll.lbc system nt_dll
+	wlink @$(OBJS)\propgriddll.lbc
+	wlib -q -n -b $(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid.lib +$^@
+!endif
+!endif
+!endif
+
+!ifeq MONOLITHIC 0
+!ifeq SHARED 0
+!ifeq USE_PROPGRID 1
+$(LIBDIRNAME)\wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid.lib :  $(PROPGRIDLIB_OBJECTS)
+	@%create $(OBJS)\propgridlib.lbc
+	@for %i in ($(PROPGRIDLIB_OBJECTS)) do @%append $(OBJS)\propgridlib.lbc +%i
+	wlib -q -p4096 -n -b $^@ @$(OBJS)\propgridlib.lbc
 !endif
 !endif
 !endif
@@ -5337,6 +5447,9 @@ $(OBJS)\monodll_msw_radiobut.obj :  .AUTODEPEND ..\..\src\msw\radiobut.cpp
 $(OBJS)\monodll_msw_scrolbar.obj :  .AUTODEPEND ..\..\src\msw\scrolbar.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
 
+$(OBJS)\monodll_scrolwin.obj :  .AUTODEPEND ..\..\src\msw\scrolwin.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
+
 $(OBJS)\monodll_slider95.obj :  .AUTODEPEND ..\..\src\msw\slider95.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
 
@@ -5824,6 +5937,30 @@ $(OBJS)\monodll_tabmdi.obj :  .AUTODEPEND ..\..\src\aui\tabmdi.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
 
 $(OBJS)\monodll_auibar.obj :  .AUTODEPEND ..\..\src\aui\auibar.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
+
+$(OBJS)\monodll_advprops.obj :  .AUTODEPEND ..\..\src\propgrid\advprops.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
+
+$(OBJS)\monodll_editors.obj :  .AUTODEPEND ..\..\src\propgrid\editors.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
+
+$(OBJS)\monodll_extras.obj :  .AUTODEPEND ..\..\src\propgrid\extras.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
+
+$(OBJS)\monodll_manager.obj :  .AUTODEPEND ..\..\src\propgrid\manager.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
+
+$(OBJS)\monodll_propgrid_odcombo.obj :  .AUTODEPEND ..\..\src\propgrid\odcombo.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
+
+$(OBJS)\monodll_propgrid.obj :  .AUTODEPEND ..\..\src\propgrid\propgrid.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
+
+$(OBJS)\monodll_props.obj :  .AUTODEPEND ..\..\src\propgrid\props.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
+
+$(OBJS)\monodll_xh_propgrid.obj :  .AUTODEPEND ..\..\src\propgrid\xh_propgrid.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
 
 $(OBJS)\monodll_richtextctrl.obj :  .AUTODEPEND ..\..\src\richtext\richtextctrl.cpp
@@ -6795,7 +6932,7 @@ $(OBJS)\monodll_laywin.obj :  .AUTODEPEND ..\..\src\generic\laywin.cpp
 !endif
 
 !ifeq USE_GUI 1
-$(OBJS)\monodll_odcombo.obj :  .AUTODEPEND ..\..\src\generic\odcombo.cpp
+$(OBJS)\monodll_generic_odcombo.obj :  .AUTODEPEND ..\..\src\generic\odcombo.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONODLL_CXXFLAGS) $<
 !endif
 
@@ -7243,6 +7380,9 @@ $(OBJS)\monolib_msw_radiobut.obj :  .AUTODEPEND ..\..\src\msw\radiobut.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
 
 $(OBJS)\monolib_msw_scrolbar.obj :  .AUTODEPEND ..\..\src\msw\scrolbar.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
+
+$(OBJS)\monolib_scrolwin.obj :  .AUTODEPEND ..\..\src\msw\scrolwin.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
 
 $(OBJS)\monolib_slider95.obj :  .AUTODEPEND ..\..\src\msw\slider95.cpp
@@ -7732,6 +7872,30 @@ $(OBJS)\monolib_tabmdi.obj :  .AUTODEPEND ..\..\src\aui\tabmdi.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
 
 $(OBJS)\monolib_auibar.obj :  .AUTODEPEND ..\..\src\aui\auibar.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
+
+$(OBJS)\monolib_advprops.obj :  .AUTODEPEND ..\..\src\propgrid\advprops.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
+
+$(OBJS)\monolib_editors.obj :  .AUTODEPEND ..\..\src\propgrid\editors.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
+
+$(OBJS)\monolib_extras.obj :  .AUTODEPEND ..\..\src\propgrid\extras.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
+
+$(OBJS)\monolib_manager.obj :  .AUTODEPEND ..\..\src\propgrid\manager.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
+
+$(OBJS)\monolib_propgrid_odcombo.obj :  .AUTODEPEND ..\..\src\propgrid\odcombo.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
+
+$(OBJS)\monolib_propgrid.obj :  .AUTODEPEND ..\..\src\propgrid\propgrid.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
+
+$(OBJS)\monolib_props.obj :  .AUTODEPEND ..\..\src\propgrid\props.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
+
+$(OBJS)\monolib_xh_propgrid.obj :  .AUTODEPEND ..\..\src\propgrid\xh_propgrid.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
 
 $(OBJS)\monolib_richtextctrl.obj :  .AUTODEPEND ..\..\src\richtext\richtextctrl.cpp
@@ -8703,7 +8867,7 @@ $(OBJS)\monolib_laywin.obj :  .AUTODEPEND ..\..\src\generic\laywin.cpp
 !endif
 
 !ifeq USE_GUI 1
-$(OBJS)\monolib_odcombo.obj :  .AUTODEPEND ..\..\src\generic\odcombo.cpp
+$(OBJS)\monolib_generic_odcombo.obj :  .AUTODEPEND ..\..\src\generic\odcombo.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(MONOLIB_CXXFLAGS) $<
 !endif
 
@@ -9493,6 +9657,9 @@ $(OBJS)\coredll_msw_radiobut.obj :  .AUTODEPEND ..\..\src\msw\radiobut.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(COREDLL_CXXFLAGS) $<
 
 $(OBJS)\coredll_msw_scrolbar.obj :  .AUTODEPEND ..\..\src\msw\scrolbar.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(COREDLL_CXXFLAGS) $<
+
+$(OBJS)\coredll_scrolwin.obj :  .AUTODEPEND ..\..\src\msw\scrolwin.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(COREDLL_CXXFLAGS) $<
 
 $(OBJS)\coredll_slider95.obj :  .AUTODEPEND ..\..\src\msw\slider95.cpp
@@ -10673,6 +10840,9 @@ $(OBJS)\corelib_msw_radiobut.obj :  .AUTODEPEND ..\..\src\msw\radiobut.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(CORELIB_CXXFLAGS) $<
 
 $(OBJS)\corelib_msw_scrolbar.obj :  .AUTODEPEND ..\..\src\msw\scrolbar.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(CORELIB_CXXFLAGS) $<
+
+$(OBJS)\corelib_scrolwin.obj :  .AUTODEPEND ..\..\src\msw\scrolwin.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(CORELIB_CXXFLAGS) $<
 
 $(OBJS)\corelib_slider95.obj :  .AUTODEPEND ..\..\src\msw\slider95.cpp
@@ -12625,6 +12795,63 @@ $(OBJS)\richtextlib_richtextstyledlg.obj :  .AUTODEPEND ..\..\src\richtext\richt
 
 $(OBJS)\richtextlib_richtextprint.obj :  .AUTODEPEND ..\..\src\richtext\richtextprint.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(RICHTEXTLIB_CXXFLAGS) $<
+
+$(OBJS)\propgriddll_dummy.obj :  .AUTODEPEND ..\..\src\common\dummy.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDDLL_CXXFLAGS) $<
+
+$(OBJS)\propgriddll_version.res :  .AUTODEPEND ..\..\src\msw\version.rc
+	wrc -q -ad -bt=nt -r -fo=$^@    -d__WXMSW__ $(__WXUNIV_DEFINE_p) $(__DEBUG_DEFINE_p) $(__NDEBUG_DEFINE_p) $(__EXCEPTIONS_DEFINE_p) $(__RTTI_DEFINE_p) $(__THREAD_DEFINE_p) $(__UNICODE_DEFINE_p)  $(__GFXCTX_DEFINE_p) -i=$(SETUPHDIR) -i=..\..\include $(____CAIRO_INCLUDEDIR_FILENAMES) -dWXBUILDING -dWXDLLNAME=wx$(PORTNAME)$(WXUNIVNAME)$(WX_RELEASE_NODOT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid_wat$(VENDORTAG) -i=..\..\src\tiff -i=..\..\src\jpeg -i=..\..\src\png -i=..\..\src\zlib  -i=..\..\src\regex -i=..\..\src\expat\lib -dWXUSINGDLL -dWXMAKINGDLL_PROPGRID $<
+
+$(OBJS)\propgriddll_advprops.obj :  .AUTODEPEND ..\..\src\propgrid\advprops.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDDLL_CXXFLAGS) $<
+
+$(OBJS)\propgriddll_editors.obj :  .AUTODEPEND ..\..\src\propgrid\editors.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDDLL_CXXFLAGS) $<
+
+$(OBJS)\propgriddll_extras.obj :  .AUTODEPEND ..\..\src\propgrid\extras.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDDLL_CXXFLAGS) $<
+
+$(OBJS)\propgriddll_manager.obj :  .AUTODEPEND ..\..\src\propgrid\manager.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDDLL_CXXFLAGS) $<
+
+$(OBJS)\propgriddll_odcombo.obj :  .AUTODEPEND ..\..\src\propgrid\odcombo.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDDLL_CXXFLAGS) $<
+
+$(OBJS)\propgriddll_propgrid.obj :  .AUTODEPEND ..\..\src\propgrid\propgrid.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDDLL_CXXFLAGS) $<
+
+$(OBJS)\propgriddll_props.obj :  .AUTODEPEND ..\..\src\propgrid\props.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDDLL_CXXFLAGS) $<
+
+$(OBJS)\propgriddll_xh_propgrid.obj :  .AUTODEPEND ..\..\src\propgrid\xh_propgrid.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDDLL_CXXFLAGS) $<
+
+$(OBJS)\propgridlib_dummy.obj :  .AUTODEPEND ..\..\src\common\dummy.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDLIB_CXXFLAGS) $<
+
+$(OBJS)\propgridlib_advprops.obj :  .AUTODEPEND ..\..\src\propgrid\advprops.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDLIB_CXXFLAGS) $<
+
+$(OBJS)\propgridlib_editors.obj :  .AUTODEPEND ..\..\src\propgrid\editors.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDLIB_CXXFLAGS) $<
+
+$(OBJS)\propgridlib_extras.obj :  .AUTODEPEND ..\..\src\propgrid\extras.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDLIB_CXXFLAGS) $<
+
+$(OBJS)\propgridlib_manager.obj :  .AUTODEPEND ..\..\src\propgrid\manager.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDLIB_CXXFLAGS) $<
+
+$(OBJS)\propgridlib_odcombo.obj :  .AUTODEPEND ..\..\src\propgrid\odcombo.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDLIB_CXXFLAGS) $<
+
+$(OBJS)\propgridlib_propgrid.obj :  .AUTODEPEND ..\..\src\propgrid\propgrid.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDLIB_CXXFLAGS) $<
+
+$(OBJS)\propgridlib_props.obj :  .AUTODEPEND ..\..\src\propgrid\props.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDLIB_CXXFLAGS) $<
+
+$(OBJS)\propgridlib_xh_propgrid.obj :  .AUTODEPEND ..\..\src\propgrid\xh_propgrid.cpp
+	$(CXX) -bt=nt -zq -fo=$^@ $(PROPGRIDLIB_CXXFLAGS) $<
 
 $(OBJS)\gldll_dummy.obj :  .AUTODEPEND ..\..\src\common\dummy.cpp
 	$(CXX) -bt=nt -zq -fo=$^@ $(GLDLL_CXXFLAGS) $<
