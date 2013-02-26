@@ -1572,6 +1572,7 @@ IMPORTANT: please read docs/tech/tn0016.txt before modifying this file!
     src/msw/radiobox.cpp
     src/msw/radiobut.cpp
     src/msw/scrolbar.cpp
+    src/msw/scrolwin.cpp
     src/msw/slider95.cpp
     src/msw/spinbutt.cpp
     src/msw/spinctrl.cpp
