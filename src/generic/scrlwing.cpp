@@ -910,13 +910,18 @@ void wxScrollHelper::Scroll( int x_pos, int y_pos )
     if (!m_targetWindow)
         return;
 
-    if (((x_pos == -1) || (x_pos == m_xScrollPosition)) &&
-        ((y_pos == -1) || (y_pos == m_yScrollPosition))) return;
+    if (x_pos == -1)
+        x_pos = m_xScrollPosition;
+    if (y_pos == -1)
+        y_pos = m_yScrollPosition;
+
+    if ((x_pos == m_xScrollPosition) && (y_pos == m_yScrollPosition))
+        return;
 
     int w = 0, h = 0;
     GetTargetSize(&w, &h);
 
-    // compute new position:
+    // compute new position of scroll handles
     int new_x = m_xScrollPosition;
     int new_y = m_yScrollPosition;
 
@@ -949,30 +954,27 @@ void wxScrollHelper::Scroll( int x_pos, int y_pos )
         new_y = wxMax( 0, new_y );
     }
 
-    if ( new_x == m_xScrollPosition && new_y == m_yScrollPosition )
-        return; // nothing to do, the position didn't change
-
     // flush all pending repaints before we change m_{x,y}ScrollPosition, as
     // otherwise invalidated area could be updated incorrectly later when
     // ScrollWindow() makes sure they're repainted before scrolling them
     m_targetWindow->Update();
 
     // update the position and scroll the window now:
-    if (m_xScrollPosition != new_x)
+    if (m_xScrollPosition != x_pos)
     {
         int old_x = m_xScrollPosition;
-        m_xScrollPosition = new_x;
+        m_xScrollPosition = x_pos;
         m_win->SetScrollPos( wxHORIZONTAL, new_x );
-        m_targetWindow->ScrollWindow( (old_x-new_x)*m_xScrollPixelsPerLine, 0,
+        m_targetWindow->ScrollWindow( (old_x-x_pos)*m_xScrollPixelsPerLine, 0,
                                       GetScrollRect() );
     }
 
-    if (m_yScrollPosition != new_y)
+    if (m_yScrollPosition != y_pos)
     {
         int old_y = m_yScrollPosition;
-        m_yScrollPosition = new_y;
+        m_yScrollPosition = y_pos;
         m_win->SetScrollPos( wxVERTICAL, new_y );
-        m_targetWindow->ScrollWindow( 0, (old_y-new_y)*m_yScrollPixelsPerLine,
+        m_targetWindow->ScrollWindow( 0, (old_y-y_pos)*m_yScrollPixelsPerLine,
                                       GetScrollRect() );
     }
 }
