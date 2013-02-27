@@ -721,6 +721,50 @@ if BUILD_STC:
     wxpExtensions.append(ext)
 
 
+
+#----------------------------------------------------------------------
+# Define the PROPGRID extension module
+#----------------------------------------------------------------------
+
+try:
+    _temp_propgrid_ = BUILD_PROPGRID
+except NameError:
+    BUILD_PROPGRID = 1
+
+if BUILD_PROPGRID:
+    msg('Preparing PROPGRID...')
+    location = 'contrib/propgrid'
+    #if os.name == 'nt':
+    PROPGRID_H = opj(WXDIR, 'contrib', 'include/wx/propgrid')
+
+    _use_swig_args = swig_args
+    swig_args_rem = []
+
+    for s_ in swig_args_rem:
+        _use_swig_args.remove(s_)
+
+    swig_sources = run_swig(['propgrid.i'], location, GENDIR, PKGDIR,
+                            USE_SWIG, swig_force,
+                            _use_swig_args + ['-noextern'] + ['-I'+PROPGRID_H, '-I'+location],
+                            [opj(PROPGRID_H, 'propgrid.h'),
+                             ] + swig_deps)
+
+    ext = Extension('_propgrid',
+                    swig_sources,
+
+                    include_dirs = includes + CONTRIBS_INC,
+                    define_macros = defines,
+
+                    library_dirs = libdirs,
+                    libraries = libs + makeLibName('propgrid'),
+
+                    extra_compile_args = cflags,
+                    extra_link_args = lflags,
+                    )
+
+    wxpExtensions.append(ext)
+
+
 #----------------------------------------------------------------------
 # Define the ACTIVEX extension module (experimental)
 #----------------------------------------------------------------------
