@@ -43,6 +43,7 @@ class GridFrame : public wxFrame
     void AutoSizeCols( wxCommandEvent& );
     void CellOverflow( wxCommandEvent& );
     void ResizeCell( wxCommandEvent& );
+    void HideScrollbars( wxCommandEvent& ev );
     void SetLabelColour( wxCommandEvent& );
     void SetLabelTextColour( wxCommandEvent& );
     void SetLabelFont(wxCommandEvent &);
@@ -114,6 +115,7 @@ public:
         ID_AUTOSIZECOLS,
         ID_CELLOVERFLOW,
         ID_RESIZECELL,
+        ID_HIDE_SCROLLBARS,
         ID_SETLABELCOLOUR,
         ID_SETLABELTEXTCOLOUR,
         ID_SETLABEL_FONT,

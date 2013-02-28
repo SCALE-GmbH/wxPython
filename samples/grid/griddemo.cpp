@@ -75,6 +75,7 @@ BEGIN_EVENT_TABLE( GridFrame, wxFrame )
     EVT_MENU( ID_AUTOSIZECOLS, GridFrame::AutoSizeCols )
     EVT_MENU( ID_CELLOVERFLOW, GridFrame::CellOverflow )
     EVT_MENU( ID_RESIZECELL, GridFrame::ResizeCell )
+    EVT_MENU( ID_HIDE_SCROLLBARS, GridFrame::HideScrollbars )
     EVT_MENU( ID_SETLABELCOLOUR, GridFrame::SetLabelColour )
     EVT_MENU( ID_SETLABELTEXTCOLOUR, GridFrame::SetLabelTextColour )
     EVT_MENU( ID_SETLABEL_FONT, GridFrame::SetLabelFont )
@@ -156,6 +157,7 @@ GridFrame::GridFrame()
     viewMenu->Append( ID_AUTOSIZECOLS, _T("&Auto-size cols") );
     viewMenu->Append( ID_CELLOVERFLOW, _T("&Overflow cells"), wxEmptyString, wxITEM_CHECK );
     viewMenu->Append( ID_RESIZECELL, _T("&Resize cell (7,1)"), wxEmptyString, wxITEM_CHECK );
+    viewMenu->Append( ID_HIDE_SCROLLBARS, _T("Hide scrollbars"), wxEmptyString, wxITEM_CHECK);
 
     wxMenu *rowLabelMenu = new wxMenu;
 
@@ -504,6 +506,14 @@ void GridFrame::ResizeCell( wxCommandEvent& ev )
     else
         grid->SetCellSize( 7, 1, 1, 5 );
     grid->Refresh();
+}
+
+void GridFrame::HideScrollbars( wxCommandEvent& ev )
+{
+    if (ev.IsChecked())
+        grid->ShowScrollbars(wxSHOW_SB_NEVER, wxSHOW_SB_NEVER);
+    else
+        grid->ShowScrollbars(wxSHOW_SB_DEFAULT, wxSHOW_SB_DEFAULT);
 }
 
 void GridFrame::SetLabelColour( wxCommandEvent& WXUNUSED(ev) )

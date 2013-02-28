@@ -317,6 +317,7 @@ wxScrollHelper::wxScrollHelper(wxWindow *win)
     m_timerAutoScroll = (wxTimer *)NULL;
 
     m_handler = NULL;
+    m_horzVisibility = m_vertVisibility = wxSHOW_SB_DEFAULT;
 
     m_win = win;
     
@@ -1521,6 +1522,39 @@ void wxScrolledWindow::OnPaint(wxPaintEvent& event)
     m_handler->ResetDrawnFlag();
 
     event.Skip();
+}
+
+void wxScrolledWindow::SetScrollbar( int orient, int pos, int thumbVisible,
+                                     int range, bool refresh )
+{
+    // Overriden here because setting the scrollbar position
+    // make the scrollbar visible. There is not much point in updating
+    // a scrollbar that is not shown either.
+    wxScrollbarVisibility horz, vert;
+    GetScrollbarVisibility(&horz, &vert);
+    bool allow_update = true;
+    if (orient == wxHORIZONTAL)
+        allow_update = horz != wxSHOW_SB_NEVER;
+    else
+        allow_update = vert != wxSHOW_SB_NEVER;
+    if (allow_update)
+        wxPanel::SetScrollbar(orient, pos, thumbVisible, range, refresh);
+}
+
+void wxScrolledWindow::SetScrollPos( int orient, int pos, bool refresh )
+{
+    // Overriden here because setting the scrollbar position
+    // make the scrollbar visible. There is not much point in updating
+    // a scrollbar that is not shown either.
+    wxScrollbarVisibility horz, vert;
+    GetScrollbarVisibility(&horz, &vert);
+    bool allow_update = true;
+    if (orient == wxHORIZONTAL)
+        allow_update = horz != wxSHOW_SB_NEVER;
+    else
+        allow_update = vert != wxSHOW_SB_NEVER;
+    if (allow_update)
+        wxPanel::SetScrollPos(orient, pos, refresh);
 }
 
 #ifdef __WXMSW__

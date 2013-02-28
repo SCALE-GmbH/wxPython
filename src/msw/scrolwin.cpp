@@ -34,9 +34,17 @@
 void wxScrollHelperNative::ShowScrollbars(
         wxScrollbarVisibility horz, wxScrollbarVisibility vert)
 {
+    // Call base class first to save the new values, as hiding the scroll bars
+    // caused a size event which caused an update of the scroll bars making
+    // them visible again.
+
+    wxScrollHelper::ShowScrollbars(horz, vert);
+
     HWND winhnd = GetHwndOf(m_win);
     bool show_horizontal = (horz != wxSHOW_SB_NEVER);
     bool show_vertical = (vert != wxSHOW_SB_NEVER);
-    ::ShowScrollBar(winhnd, SB_HORZ, show_horizontal);
-    ::ShowScrollBar(winhnd, SB_VERT, show_vertical);
+    if (!::ShowScrollBar(winhnd, SB_HORZ, show_horizontal))
+        wxLogLastError(wxT("ShowScrollBar"));
+    if (!::ShowScrollBar(winhnd, SB_VERT, show_vertical))
+        wxLogLastError(wxT("ShowScrollBar"));
 }

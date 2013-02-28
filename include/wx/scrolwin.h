@@ -95,7 +95,17 @@ public:
     // which case you should provide some other way to scroll the window as the
     // user wouldn't be able to do it at all)
     void ShowScrollbars(wxScrollbarVisibility horz, wxScrollbarVisibility vert)
-    {}
+    {
+        m_horzVisibility = horz;
+        m_vertVisibility = vert;
+    }
+
+    void GetScrollbarVisibility(wxScrollbarVisibility *horz,
+                                wxScrollbarVisibility *vert)
+    {
+        *horz = m_horzVisibility;
+        *vert = m_vertVisibility;
+    }
 
     // Enable/disable Windows scrolling in either direction. If true, wxWidgets
     // scrolls the canvas and only a bit of the canvas is invalidated; no
@@ -253,7 +263,10 @@ protected:
     int m_wheelRotation;
 #endif // wxUSE_MOUSEWHEEL
 
+
     wxScrollHelperEvtHandler *m_handler;
+
+    wxScrollbarVisibility m_horzVisibility, m_vertVisibility;
 
     DECLARE_NO_COPY_CLASS(wxScrollHelper)
 };
@@ -311,6 +324,10 @@ public:
                 const wxSize& size = wxDefaultSize,
                 long style = wxScrolledWindowStyle,
                 const wxString& name = wxPanelNameStr);
+
+    virtual void SetScrollbar( int orient, int pos, int thumbVisible,
+                               int range, bool refresh = true );
+    virtual void SetScrollPos( int orient, int pos, bool refresh = true );
 
     // we need to return a special WM_GETDLGCODE value to process just the
     // arrows but let the other navigation characters through
