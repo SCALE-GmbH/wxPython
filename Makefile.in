@@ -3227,7 +3227,8 @@ COND_USE_GUI_1_ALL_GUI_HEADERS =  \
 	wx/propgrid/odcombo.h \
 	wx/propgrid/manager.h \
 	wx/propgrid/propgrid.h \
-	wx/propgrid/props.h
+	wx/propgrid/props.h \
+	wx/propgrid/propdev.h
 @COND_USE_GUI_1@ALL_GUI_HEADERS = $(COND_USE_GUI_1_ALL_GUI_HEADERS)
 COND_MONOLITHIC_1_SHARED_1___monodll___depname = \
 	$(LIBDIRNAME)/$(DLLPREFIX)$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG)$(dll___targetsuf3)
