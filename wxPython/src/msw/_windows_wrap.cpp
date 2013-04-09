@@ -2742,6 +2742,16 @@ namespace swig {
 
 
 
+  #define SWIG_From_long   PyInt_FromLong 
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_int  (int value)
+{    
+  return SWIG_From_long  (value);
+}
+
+
 #include <limits.h>
 #ifndef LLONG_MIN
 # define LLONG_MIN	LONG_LONG_MIN
@@ -2796,16 +2806,6 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
     if (SWIG_IsOK(res) && val) *val = v ? true : false;
     return res;
   }
-}
-
-
-  #define SWIG_From_long   PyInt_FromLong 
-
-
-SWIGINTERNINLINE PyObject *
-SWIG_From_int  (int value)
-{    
-  return SWIG_From_long  (value);
 }
 
 
@@ -4720,6 +4720,53 @@ SWIGINTERN PyObject *_wrap_ScrolledWindow_GetViewStart(PyObject *SWIGUNUSEDPARM(
     int new_flags = SWIG_IsNewObj(res3) ? (SWIG_POINTER_OWN |  0 ) :  0 ;
     resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj((void*)(arg3), SWIGTYPE_p_int, new_flags));
   }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ScrolledWindow_ShowScrollbars(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  wxScrolledWindow *arg1 = (wxScrolledWindow *) 0 ;
+  wxScrollbarVisibility arg2 ;
+  wxScrollbarVisibility arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *  kwnames[] = {
+    (char *) "self",(char *) "horz",(char *) "vert", NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args,kwargs,(char *)"OOO:ScrolledWindow_ShowScrollbars",kwnames,&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_wxScrolledWindow, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScrolledWindow_ShowScrollbars" "', expected argument " "1"" of type '" "wxScrolledWindow *""'"); 
+  }
+  arg1 = reinterpret_cast< wxScrolledWindow * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ScrolledWindow_ShowScrollbars" "', expected argument " "2"" of type '" "wxScrollbarVisibility""'");
+  } 
+  arg2 = static_cast< wxScrollbarVisibility >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ScrolledWindow_ShowScrollbars" "', expected argument " "3"" of type '" "wxScrollbarVisibility""'");
+  } 
+  arg3 = static_cast< wxScrollbarVisibility >(val3);
+  {
+    PyThreadState* __tstate = wxPyBeginAllowThreads();
+    (arg1)->ShowScrollbars(arg2,arg3);
+    wxPyEndAllowThreads(__tstate);
+    if (PyErr_Occurred()) SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -32071,6 +32118,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ScrolledWindow_GetScrollPixelsPerUnit", (PyCFunction)_wrap_ScrolledWindow_GetScrollPixelsPerUnit, METH_O, NULL},
 	 { (char *)"ScrolledWindow_EnableScrolling", (PyCFunction) _wrap_ScrolledWindow_EnableScrolling, METH_VARARGS | METH_KEYWORDS, NULL},
 	 { (char *)"ScrolledWindow_GetViewStart", (PyCFunction)_wrap_ScrolledWindow_GetViewStart, METH_O, NULL},
+	 { (char *)"ScrolledWindow_ShowScrollbars", (PyCFunction) _wrap_ScrolledWindow_ShowScrollbars, METH_VARARGS | METH_KEYWORDS, NULL},
 	 { (char *)"ScrolledWindow_SetScale", (PyCFunction) _wrap_ScrolledWindow_SetScale, METH_VARARGS | METH_KEYWORDS, NULL},
 	 { (char *)"ScrolledWindow_GetScaleX", (PyCFunction)_wrap_ScrolledWindow_GetScaleX, METH_O, NULL},
 	 { (char *)"ScrolledWindow_GetScaleY", (PyCFunction)_wrap_ScrolledWindow_GetScaleY, METH_O, NULL},
@@ -35119,6 +35167,9 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   
+  SWIG_Python_SetConstant(d, "SHOW_SB_NEVER",SWIG_From_int(static_cast< int >(wxSHOW_SB_NEVER)));
+  SWIG_Python_SetConstant(d, "SHOW_SB_DEFAULT",SWIG_From_int(static_cast< int >(wxSHOW_SB_DEFAULT)));
+  SWIG_Python_SetConstant(d, "SHOW_SB_ALWAYS",SWIG_From_int(static_cast< int >(wxSHOW_SB_ALWAYS)));
   PyDict_SetItemString(d,(char*)"cvar", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char*)"FrameNameStr",FrameNameStr_get, FrameNameStr_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"DialogNameStr",DialogNameStr_get, DialogNameStr_set);

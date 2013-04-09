@@ -488,7 +488,7 @@ ext = Extension('_xrc',
 wxpExtensions.append(ext)
 
 
-if os.name == 'posix':
+if True or os.name == 'posix':
     # nur für Linux ist propgrid in die wxPython-Sourcen von uns integriert wurden.
     # Unter Windows kann es so gebaut werden (parallel zu den wx-Sourcen), wie es der
     # propgrid-Autor vorsieht.
