@@ -3600,8 +3600,15 @@ public:
                     ro = PyObject_Str(ro);
                     Py_DECREF(old);
                 }
-                rval = Py2wxString(ro);
-                Py_DECREF(ro);
+                if (ro) {
+                    rval = Py2wxString(ro);
+                    Py_DECREF(ro);
+                } else {
+                    // Failed to convert the result to a string. Report the exception and
+                    // return an identifiable place holder string value.
+                    PyErr_Print();
+                    rval = wxT("<can not convert to string>");
+                }
             }
         }
         wxPyEndBlockThreads(blocked);
@@ -23964,6 +23971,7 @@ SWIGEXPORT void SWIG_init(void) {
   PyDict_SetItemString(d, "wxEVT_GRID_CELL_RIGHT_CLICK", PyInt_FromLong(wxEVT_GRID_CELL_RIGHT_CLICK));
   PyDict_SetItemString(d, "wxEVT_GRID_CELL_LEFT_DCLICK", PyInt_FromLong(wxEVT_GRID_CELL_LEFT_DCLICK));
   PyDict_SetItemString(d, "wxEVT_GRID_CELL_RIGHT_DCLICK", PyInt_FromLong(wxEVT_GRID_CELL_RIGHT_DCLICK));
+  PyDict_SetItemString(d, "wxEVT_GRID_RIGHT_CELL_EDGE_LEFT_DCLICK", PyInt_FromLong(wxEVT_GRID_RIGHT_CELL_EDGE_LEFT_DCLICK));
   PyDict_SetItemString(d, "wxEVT_GRID_LABEL_LEFT_CLICK", PyInt_FromLong(wxEVT_GRID_LABEL_LEFT_CLICK));
   PyDict_SetItemString(d, "wxEVT_GRID_LABEL_RIGHT_CLICK", PyInt_FromLong(wxEVT_GRID_LABEL_RIGHT_CLICK));
   PyDict_SetItemString(d, "wxEVT_GRID_LABEL_LEFT_DCLICK", PyInt_FromLong(wxEVT_GRID_LABEL_LEFT_DCLICK));
