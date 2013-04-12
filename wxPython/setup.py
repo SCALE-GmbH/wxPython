@@ -495,6 +495,7 @@ if True:
                             USE_SWIG, swig_force,
                             swig_args + ['-I'+opj(WXDIR, 'include/wx/propgrid')],
                             swig_deps + [opj(WXDIR, 'include/wx/propgrid/advprops.h'),
+                                         opj(WXDIR, 'include/wx/propgrid/sampleprops.h'),
                                          opj(WXDIR, 'include/wx/propgrid/editors.h'),
                                          opj(WXDIR, 'include/wx/propgrid/manager.h'),
                                          opj(WXDIR, 'include/wx/propgrid/propgrid.h'),
@@ -504,7 +505,7 @@ if True:
         propgridLib = makeLibName('propgrid')
     else:
         propgridLib = []
-    ext = Extension('_propgrid', swig_sources + ['src/propgrid/sampleprops.cpp'],
+    ext = Extension('_propgrid', swig_sources,
                     include_dirs =  includes + ['src/propgrid'],
                     define_macros = defines,
                     library_dirs = libdirs,

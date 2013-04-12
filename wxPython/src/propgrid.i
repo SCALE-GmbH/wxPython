@@ -48,7 +48,7 @@ properties such as strings, numbers, colours, and string lists."
 #include <wx/propgrid/manager.h>
 #include <wx/propgrid/editors.h>
 #include <wx/propgrid/extras.h>
-#include "sampleprops.h"
+#include <wx/propgrid/sampleprops.h>
 
 #if !defined(__WXMSW__) && !defined(OutputDebugString)
   #define OutputDebugString(A)
