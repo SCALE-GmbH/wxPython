@@ -1547,6 +1547,7 @@ PROPGRIDDLL_CXXFLAGS = $(__propgriddll_PCH_INC) -D__WX$(TOOLKIT)__ \
 PROPGRIDDLL_OBJECTS =  \
 	$(__propgriddll___win32rc) \
 	propgriddll_advprops.o \
+	propgriddll_sampleprops.o \
 	propgriddll_editors.o \
 	propgriddll_extras.o \
 	propgriddll_manager.o \
@@ -1562,6 +1563,7 @@ PROPGRIDLIB_CXXFLAGS = $(__propgridlib_PCH_INC) -D__WX$(TOOLKIT)__ \
 	$(__INC_EXPAT_p) $(CPPFLAGS) $(CXXFLAGS)
 PROPGRIDLIB_OBJECTS =  \
 	propgridlib_advprops.o \
+	propgridlib_sampleprops.o \
 	propgridlib_editors.o \
 	propgridlib_extras.o \
 	propgridlib_manager.o \
@@ -3222,6 +3224,7 @@ COND_USE_GUI_1_ALL_GUI_HEADERS =  \
 	wx/richtext/richtextstyledlg.h \
 	wx/richtext/richtextprint.h \
 	wx/propgrid/advprops.h \
+	wx/propgrid/sampleprops.h \
 	wx/propgrid/editors.h \
 	wx/propgrid/extras.h \
 	wx/propgrid/odcombo.h \
@@ -3556,6 +3559,7 @@ COND_USE_GUI_1___MONOLIB_GUI_SRC_OBJECTS =  \
 	monodll_tabmdi.o \
 	monodll_auibar.o \
 	monodll_advprops.o \
+	monodll_sampleprops.o \
 	monodll_editors.o \
 	monodll_extras.o \
 	monodll_manager.o \
@@ -5358,6 +5362,7 @@ COND_USE_GUI_1___MONOLIB_GUI_SRC_OBJECTS_1 =  \
 	monolib_tabmdi.o \
 	monolib_auibar.o \
 	monolib_advprops.o \
+	monolib_sampleprops.o \
 	monolib_editors.o \
 	monolib_extras.o \
 	monolib_manager.o \
@@ -14979,6 +14984,9 @@ monodll_auibar.o: $(srcdir)/src/aui/auibar.cpp $(MONODLL_ODEP)
 monodll_advprops.o: $(srcdir)/src/propgrid/advprops.cpp $(MONODLL_ODEP)
 	$(CXXC) -c -o $@ $(MONODLL_CXXFLAGS) $(srcdir)/src/propgrid/advprops.cpp
 
+monodll_sampleprops.o: $(srcdir)/src/propgrid/sampleprops.cpp $(MONODLL_ODEP)
+	$(CXXC) -c -o $@ $(MONODLL_CXXFLAGS) $(srcdir)/src/propgrid/sampleprops.cpp
+
 monodll_editors.o: $(srcdir)/src/propgrid/editors.cpp $(MONODLL_ODEP)
 	$(CXXC) -c -o $@ $(MONODLL_CXXFLAGS) $(srcdir)/src/propgrid/editors.cpp
 
@@ -19145,6 +19153,9 @@ monolib_auibar.o: $(srcdir)/src/aui/auibar.cpp $(MONOLIB_ODEP)
 
 monolib_advprops.o: $(srcdir)/src/propgrid/advprops.cpp $(MONOLIB_ODEP)
 	$(CXXC) -c -o $@ $(MONOLIB_CXXFLAGS) $(srcdir)/src/propgrid/advprops.cpp
+
+monolib_sampleprops.o: $(srcdir)/src/propgrid/sampleprops.cpp $(MONOLIB_ODEP)
+	$(CXXC) -c -o $@ $(MONOLIB_CXXFLAGS) $(srcdir)/src/propgrid/sampleprops.cpp
 
 monolib_editors.o: $(srcdir)/src/propgrid/editors.cpp $(MONOLIB_ODEP)
 	$(CXXC) -c -o $@ $(MONOLIB_CXXFLAGS) $(srcdir)/src/propgrid/editors.cpp
@@ -29832,6 +29843,9 @@ propgriddll_version_rc.o: $(srcdir)/src/msw/version.rc $(PROPGRIDDLL_ODEP)
 propgriddll_advprops.o: $(srcdir)/src/propgrid/advprops.cpp $(PROPGRIDDLL_ODEP)
 	$(CXXC) -c -o $@ $(PROPGRIDDLL_CXXFLAGS) $(srcdir)/src/propgrid/advprops.cpp
 
+propgriddll_sampleprops.o: $(srcdir)/src/propgrid/sampleprops.cpp $(PROPGRIDDLL_ODEP)
+	$(CXXC) -c -o $@ $(PROPGRIDDLL_CXXFLAGS) $(srcdir)/src/propgrid/sampleprops.cpp
+
 propgriddll_editors.o: $(srcdir)/src/propgrid/editors.cpp $(PROPGRIDDLL_ODEP)
 	$(CXXC) -c -o $@ $(PROPGRIDDLL_CXXFLAGS) $(srcdir)/src/propgrid/editors.cpp
 
@@ -29855,6 +29869,9 @@ propgriddll_xh_propgrid.o: $(srcdir)/src/propgrid/xh_propgrid.cpp $(PROPGRIDDLL_
 
 propgridlib_advprops.o: $(srcdir)/src/propgrid/advprops.cpp $(PROPGRIDLIB_ODEP)
 	$(CXXC) -c -o $@ $(PROPGRIDLIB_CXXFLAGS) $(srcdir)/src/propgrid/advprops.cpp
+
+propgridlib_sampleprops.o: $(srcdir)/src/propgrid/sampleprops.cpp $(PROPGRIDLIB_ODEP)
+	$(CXXC) -c -o $@ $(PROPGRIDLIB_CXXFLAGS) $(srcdir)/src/propgrid/sampleprops.cpp
 
 propgridlib_editors.o: $(srcdir)/src/propgrid/editors.cpp $(PROPGRIDLIB_ODEP)
 	$(CXXC) -c -o $@ $(PROPGRIDLIB_CXXFLAGS) $(srcdir)/src/propgrid/editors.cpp
