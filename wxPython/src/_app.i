@@ -166,6 +166,18 @@ loop, (i.e. it does not stop the program immediately!)", "");
 override is called.", "");
 
     DocDeclStr(
+        void, NotifyUserActivityEvent(wxEvent& event),
+        "Called with events that indicate user activity.", "");
+
+    DocDeclStr(
+        wxArrayInt, GetUserActivityEventTypes(),
+        "Returns the event types that are currently forwarded to NotifyUserActivityEvent.", "");
+
+    DocDeclStr(
+        void, SetUserActivityEventTypes(const wxArrayInt& eventTypes),
+        "Defines the event types that should be forwarded to NotifyUserActivityEvent.", "");
+
+    DocDeclStr(
         bool,  GetCallFilterEvent(),
         "Returns the state of the Call FilterEvent flag.", "");
 

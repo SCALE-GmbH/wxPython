@@ -80,6 +80,7 @@
 #include <wx/fontpicker.h>    
 #include <wx/collpane.h>
 #include <wx/srchctrl.h>
+#include <wx/hashset.h>
 #include <wx/generic/datectrl.h>
 
 
@@ -615,6 +616,8 @@ void wxPyCBH_delete(wxPyCallbackHelper* cbh);
 //---------------------------------------------------------------------------
 // The wxPythonApp class
 
+WX_DECLARE_HASH_SET(int, wxIntegerHash, wxIntegerEqual, wxPyEventTypeSet);
+
 enum {
     wxPYAPP_ASSERT_SUPPRESS  = 1,
     wxPYAPP_ASSERT_EXCEPTION = 2,
@@ -652,6 +655,9 @@ public:
 #endif
     virtual void ExitMainLoop();
     virtual int FilterEvent(wxEvent& event);
+    void NotifyUserActivityEvent(wxEvent& event);
+    wxArrayInt GetUserActivityEventTypes() const;
+    void SetUserActivityEventTypes(const wxArrayInt& eventTypes);
 
     // For catching Apple Events
     virtual void MacOpenFile(const wxString &fileName);
@@ -681,6 +687,8 @@ public:
     int m_assertMode;
     bool m_startupComplete;
     bool m_callFilterEvent;
+    bool m_callNotifyUserActivityEvent;
+    wxPyEventTypeSet m_userActivityEventSet;
 };
 
 extern wxPyApp *wxPythonApp;

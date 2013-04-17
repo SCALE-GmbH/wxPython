@@ -7340,6 +7340,30 @@ class PyApp(EvtHandler):
         """
         return _core_.PyApp_FilterEvent(*args, **kwargs)
 
+    def NotifyUserActivityEvent(*args, **kwargs):
+        """
+        NotifyUserActivityEvent(self, Event event)
+
+        Called with events that indicate user activity.
+        """
+        return _core_.PyApp_NotifyUserActivityEvent(*args, **kwargs)
+
+    def GetUserActivityEventTypes(*args, **kwargs):
+        """
+        GetUserActivityEventTypes(self) -> wxArrayInt
+
+        Returns the event types that are currently forwarded to NotifyUserActivityEvent.
+        """
+        return _core_.PyApp_GetUserActivityEventTypes(*args, **kwargs)
+
+    def SetUserActivityEventTypes(*args, **kwargs):
+        """
+        SetUserActivityEventTypes(self, wxArrayInt eventTypes)
+
+        Defines the event types that should be forwarded to NotifyUserActivityEvent.
+        """
+        return _core_.PyApp_SetUserActivityEventTypes(*args, **kwargs)
+
     def GetCallFilterEvent(*args, **kwargs):
         """
         GetCallFilterEvent(self) -> bool

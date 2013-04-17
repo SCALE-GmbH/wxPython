@@ -186,6 +186,7 @@ wxPyApp::wxPyApp() {
     m_assertMode = wxPYAPP_ASSERT_EXCEPTION;
     m_startupComplete = false;
     m_callFilterEvent = false;
+    m_callNotifyUserActivityEvent = false;
 }
 
 
@@ -267,8 +268,47 @@ void wxPyApp::ExitMainLoop() {
 }  
 
 
+void wxPyApp::NotifyUserActivityEvent(wxEvent& event)
+{
+}
+
+wxArrayInt wxPyApp::GetUserActivityEventTypes() const
+{
+    wxArrayInt result;
+    wxPyEventTypeSet::const_iterator it;
+    for (it = m_userActivityEventSet.begin(); it != m_userActivityEventSet.end(); ++it) {
+        int eventType = *it;
+        result.Add(eventType);
+    }
+    return result;
+}
+
+void wxPyApp::SetUserActivityEventTypes(const wxArrayInt& eventTypes)
+{
+    m_userActivityEventSet.clear();
+    for (size_t i = 0; i < eventTypes.GetCount(); i++) {
+        int eventType = eventTypes.Item(i);
+        m_userActivityEventSet.insert(eventType);
+    }
+    m_callNotifyUserActivityEvent = m_userActivityEventSet.size() != 0;
+}
+
 int wxPyApp::FilterEvent(wxEvent& event) {
     int result = -1;
+
+    /* Call the NotifyUserActivityEvent method if enabled and if the event represents
+       a user activity. */
+
+    if (m_callNotifyUserActivityEvent && m_userActivityEventSet.find(event.GetEventType()) != m_userActivityEventSet.end()) {
+        wxPyBlock_t blocked = wxPyBeginBlockThreads();
+        if (wxPyCBH_findCallback(m_myInst, "NotifyUserActivityEvent")) {
+            wxString className = event.GetClassInfo()->GetClassName();
+            PyObject* eventObject = wxPyConstructObject((void*)&event, className, 0);
+            wxPyCBH_callCallback(m_myInst, Py_BuildValue("(O)", eventObject));
+            Py_DECREF(eventObject);
+        }
+        wxPyEndBlockThreads(blocked);
+    }
 
     if (m_callFilterEvent) {
         wxPyBlock_t blocked = wxPyBeginBlockThreads();
