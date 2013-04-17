@@ -37,7 +37,7 @@
 #if !defined(WX_PROPGRID_SAMPLEPROPS_H) || defined(__WXPYTHON__)
 
 #ifndef WX_PROPGRID_SAMPLEPROPS_H
-    #include "sampleprops.h"
+    #include <wx/propgrid/sampleprops.h>
 #endif
 
 

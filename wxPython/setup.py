@@ -488,14 +488,14 @@ ext = Extension('_xrc',
 wxpExtensions.append(ext)
 
 
-if os.name == 'posix':
-    # nur für Linux ist propgrid in die wxPython-Sourcen von uns integriert wurden.
-    # Unter Windows kann es so gebaut werden (parallel zu den wx-Sourcen), wie es der
-    # propgrid-Autor vorsieht.
+if True:
+    # propgrid direkt aus den zusammengeführten Quellen bauen. Die Integration ist
+    # jetzt auch unter Windows benutzbar.
     swig_sources = run_swig(['propgrid.i'], 'src', GENDIR, PKGDIR,
                             USE_SWIG, swig_force,
                             swig_args + ['-I'+opj(WXDIR, 'include/wx/propgrid')],
                             swig_deps + [opj(WXDIR, 'include/wx/propgrid/advprops.h'),
+                                         opj(WXDIR, 'include/wx/propgrid/sampleprops.h'),
                                          opj(WXDIR, 'include/wx/propgrid/editors.h'),
                                          opj(WXDIR, 'include/wx/propgrid/manager.h'),
                                          opj(WXDIR, 'include/wx/propgrid/propgrid.h'),
@@ -505,7 +505,7 @@ if os.name == 'posix':
         propgridLib = makeLibName('propgrid')
     else:
         propgridLib = []
-    ext = Extension('_propgrid', swig_sources + ['src/propgrid/sampleprops.cpp'],
+    ext = Extension('_propgrid', swig_sources,
                     include_dirs =  includes + ['src/propgrid'],
                     define_macros = defines,
                     library_dirs = libdirs,

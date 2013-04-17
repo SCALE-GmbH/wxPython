@@ -1547,6 +1547,7 @@ PROPGRIDDLL_CXXFLAGS = $(__propgriddll_PCH_INC) -D__WX$(TOOLKIT)__ \
 PROPGRIDDLL_OBJECTS =  \
 	$(__propgriddll___win32rc) \
 	propgriddll_advprops.o \
+	propgriddll_sampleprops.o \
 	propgriddll_editors.o \
 	propgriddll_extras.o \
 	propgriddll_manager.o \
@@ -1562,6 +1563,7 @@ PROPGRIDLIB_CXXFLAGS = $(__propgridlib_PCH_INC) -D__WX$(TOOLKIT)__ \
 	$(__INC_EXPAT_p) $(CPPFLAGS) $(CXXFLAGS)
 PROPGRIDLIB_OBJECTS =  \
 	propgridlib_advprops.o \
+	propgridlib_sampleprops.o \
 	propgridlib_editors.o \
 	propgridlib_extras.o \
 	propgridlib_manager.o \
@@ -3222,12 +3224,14 @@ COND_USE_GUI_1_ALL_GUI_HEADERS =  \
 	wx/richtext/richtextstyledlg.h \
 	wx/richtext/richtextprint.h \
 	wx/propgrid/advprops.h \
+	wx/propgrid/sampleprops.h \
 	wx/propgrid/editors.h \
 	wx/propgrid/extras.h \
 	wx/propgrid/odcombo.h \
 	wx/propgrid/manager.h \
 	wx/propgrid/propgrid.h \
-	wx/propgrid/props.h
+	wx/propgrid/props.h \
+	wx/propgrid/propdev.h
 @COND_USE_GUI_1@ALL_GUI_HEADERS = $(COND_USE_GUI_1_ALL_GUI_HEADERS)
 COND_MONOLITHIC_1_SHARED_1___monodll___depname = \
 	$(LIBDIRNAME)/$(DLLPREFIX)$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG)$(dll___targetsuf3)
@@ -3555,6 +3559,7 @@ COND_USE_GUI_1___MONOLIB_GUI_SRC_OBJECTS =  \
 	monodll_tabmdi.o \
 	monodll_auibar.o \
 	monodll_advprops.o \
+	monodll_sampleprops.o \
 	monodll_editors.o \
 	monodll_extras.o \
 	monodll_manager.o \
@@ -5357,6 +5362,7 @@ COND_USE_GUI_1___MONOLIB_GUI_SRC_OBJECTS_1 =  \
 	monolib_tabmdi.o \
 	monolib_auibar.o \
 	monolib_advprops.o \
+	monolib_sampleprops.o \
 	monolib_editors.o \
 	monolib_extras.o \
 	monolib_manager.o \
@@ -12548,8 +12554,8 @@ distclean: clean
 @COND_USE_PCH_1@./.pch/wxprec_richtextlib/wx/wxprec.h.gch: 
 @COND_USE_PCH_1@	$(BK_MAKE_PCH) ./.pch/wxprec_richtextlib/wx/wxprec.h.gch wx/wxprec.h $(CXX) $(RICHTEXTLIB_CXXFLAGS)
 
-@COND_MONOLITHIC_0_SHARED_1_USE_PROPGRID_1@$(LIBDIRNAME)/$(DLLPREFIX)$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG)$(dll___targetsuf3): $(PROPGRIDDLL_OBJECTS) $(__wxtiff___depname) $(__wxjpeg___depname) $(__wxpng___depname) $(__wxexpat___depname) $(__wxzlib___depname) $(__wxodbc___depname) $(__wxregex___depname) $(__propgriddll___win32rc) $(__advdll___depname) $(__coredll___depname) $(__basedll___depname)
-@COND_MONOLITHIC_0_SHARED_1_USE_PROPGRID_1@	$(SHARED_LD_CXX) $@ $(PROPGRIDDLL_OBJECTS) -L$(LIBDIRNAME) -L$(LIBDIRNAME) -L$(LIBDIRNAME)    -L$(LIBDIRNAME) $(__propgriddll___macinstnamecmd) $(__propgriddll___importlib) $(__propgriddll___soname_flags) $(WXMACVERSION_CMD) $(LDFLAGS)  $(__LIB_TIFF_p) $(__LIB_JPEG_p) $(__LIB_PNG_p) $(EXTRALIBS_FOR_GUI) $(__LIB_ZLIB_p) $(__LIB_ODBC_p) $(__LIB_REGEX_p) $(__LIB_EXPAT_p) $(EXTRALIBS_FOR_BASE) -lwx_$(PORTNAME)$(WXUNIVNAME)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_adv-$(WX_RELEASE)$(HOST_SUFFIX) -lwx_$(PORTNAME)$(WXUNIVNAME)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_core-$(WX_RELEASE)$(HOST_SUFFIX) -lwx_base$(WXBASEPORT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX) $(LIBS)
+@COND_MONOLITHIC_0_SHARED_1_USE_PROPGRID_1@$(LIBDIRNAME)/$(DLLPREFIX)$(WXDLLNAMEPREFIXGUI)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_propgrid$(WXCOMPILER)$(VENDORTAG)$(WXDLLVERSIONTAG)$(dll___targetsuf3): $(PROPGRIDDLL_OBJECTS) $(__wxtiff___depname) $(__wxjpeg___depname) $(__wxpng___depname) $(__wxexpat___depname) $(__wxzlib___depname) $(__wxodbc___depname) $(__wxregex___depname) $(__propgriddll___win32rc) $(__advdll___depname) $(__coredll___depname) $(__basedll___depname) $(__xrcdll___depname) $(__xmldll___depname)
+@COND_MONOLITHIC_0_SHARED_1_USE_PROPGRID_1@	$(SHARED_LD_CXX) $@ $(PROPGRIDDLL_OBJECTS) -L$(LIBDIRNAME) -L$(LIBDIRNAME) -L$(LIBDIRNAME) -L$(LIBDIRNAME) -L$(LIBDIRNAME)    -L$(LIBDIRNAME) $(__propgriddll___macinstnamecmd) $(__propgriddll___importlib) $(__propgriddll___soname_flags) $(WXMACVERSION_CMD) $(LDFLAGS)  $(__LIB_TIFF_p) $(__LIB_JPEG_p) $(__LIB_PNG_p) $(EXTRALIBS_FOR_GUI) $(__LIB_ZLIB_p) $(__LIB_ODBC_p) $(__LIB_REGEX_p) $(__LIB_EXPAT_p) $(EXTRALIBS_FOR_BASE) -lwx_$(PORTNAME)$(WXUNIVNAME)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_adv-$(WX_RELEASE)$(HOST_SUFFIX) -lwx_$(PORTNAME)$(WXUNIVNAME)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_core-$(WX_RELEASE)$(HOST_SUFFIX) -lwx_base$(WXBASEPORT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)-$(WX_RELEASE)$(HOST_SUFFIX) -lwx_$(PORTNAME)$(WXUNIVNAME)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_xrc-$(WX_RELEASE)$(HOST_SUFFIX) -lwx_base$(WXBASEPORT)$(WXUNICODEFLAG)$(WXDEBUGFLAG)$(WX_LIB_FLAVOUR)_xml-$(WX_RELEASE)$(HOST_SUFFIX) $(LIBS)
 @COND_MONOLITHIC_0_SHARED_1_USE_PROPGRID_1@	
 @COND_MONOLITHIC_0_SHARED_1_USE_PROPGRID_1@	$(__propgriddll___so_symlinks_cmd)
 
@@ -14977,6 +14983,9 @@ monodll_auibar.o: $(srcdir)/src/aui/auibar.cpp $(MONODLL_ODEP)
 
 monodll_advprops.o: $(srcdir)/src/propgrid/advprops.cpp $(MONODLL_ODEP)
 	$(CXXC) -c -o $@ $(MONODLL_CXXFLAGS) $(srcdir)/src/propgrid/advprops.cpp
+
+monodll_sampleprops.o: $(srcdir)/src/propgrid/sampleprops.cpp $(MONODLL_ODEP)
+	$(CXXC) -c -o $@ $(MONODLL_CXXFLAGS) $(srcdir)/src/propgrid/sampleprops.cpp
 
 monodll_editors.o: $(srcdir)/src/propgrid/editors.cpp $(MONODLL_ODEP)
 	$(CXXC) -c -o $@ $(MONODLL_CXXFLAGS) $(srcdir)/src/propgrid/editors.cpp
@@ -19144,6 +19153,9 @@ monolib_auibar.o: $(srcdir)/src/aui/auibar.cpp $(MONOLIB_ODEP)
 
 monolib_advprops.o: $(srcdir)/src/propgrid/advprops.cpp $(MONOLIB_ODEP)
 	$(CXXC) -c -o $@ $(MONOLIB_CXXFLAGS) $(srcdir)/src/propgrid/advprops.cpp
+
+monolib_sampleprops.o: $(srcdir)/src/propgrid/sampleprops.cpp $(MONOLIB_ODEP)
+	$(CXXC) -c -o $@ $(MONOLIB_CXXFLAGS) $(srcdir)/src/propgrid/sampleprops.cpp
 
 monolib_editors.o: $(srcdir)/src/propgrid/editors.cpp $(MONOLIB_ODEP)
 	$(CXXC) -c -o $@ $(MONOLIB_CXXFLAGS) $(srcdir)/src/propgrid/editors.cpp
@@ -29831,6 +29843,9 @@ propgriddll_version_rc.o: $(srcdir)/src/msw/version.rc $(PROPGRIDDLL_ODEP)
 propgriddll_advprops.o: $(srcdir)/src/propgrid/advprops.cpp $(PROPGRIDDLL_ODEP)
 	$(CXXC) -c -o $@ $(PROPGRIDDLL_CXXFLAGS) $(srcdir)/src/propgrid/advprops.cpp
 
+propgriddll_sampleprops.o: $(srcdir)/src/propgrid/sampleprops.cpp $(PROPGRIDDLL_ODEP)
+	$(CXXC) -c -o $@ $(PROPGRIDDLL_CXXFLAGS) $(srcdir)/src/propgrid/sampleprops.cpp
+
 propgriddll_editors.o: $(srcdir)/src/propgrid/editors.cpp $(PROPGRIDDLL_ODEP)
 	$(CXXC) -c -o $@ $(PROPGRIDDLL_CXXFLAGS) $(srcdir)/src/propgrid/editors.cpp
 
@@ -29854,6 +29869,9 @@ propgriddll_xh_propgrid.o: $(srcdir)/src/propgrid/xh_propgrid.cpp $(PROPGRIDDLL_
 
 propgridlib_advprops.o: $(srcdir)/src/propgrid/advprops.cpp $(PROPGRIDLIB_ODEP)
 	$(CXXC) -c -o $@ $(PROPGRIDLIB_CXXFLAGS) $(srcdir)/src/propgrid/advprops.cpp
+
+propgridlib_sampleprops.o: $(srcdir)/src/propgrid/sampleprops.cpp $(PROPGRIDLIB_ODEP)
+	$(CXXC) -c -o $@ $(PROPGRIDLIB_CXXFLAGS) $(srcdir)/src/propgrid/sampleprops.cpp
 
 propgridlib_editors.o: $(srcdir)/src/propgrid/editors.cpp $(PROPGRIDLIB_ODEP)
 	$(CXXC) -c -o $@ $(PROPGRIDLIB_CXXFLAGS) $(srcdir)/src/propgrid/editors.cpp

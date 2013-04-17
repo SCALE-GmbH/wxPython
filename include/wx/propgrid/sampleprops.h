@@ -12,12 +12,7 @@
 #ifndef WX_PROPGRID_SAMPLEPROPS_H
 #define WX_PROPGRID_SAMPLEPROPS_H
 
-#ifndef __WXPYTHON__
-    // This decl is what you would use in a normal app
-    #define wxPG_EXTRAS_DECL
-#else
-    #define wxPG_EXTRAS_DECL     WXDLLIMPEXP_PG
-#endif
+#define wxPG_EXTRAS_DECL     WXDLLIMPEXP_PG
 
 //
 // Additional properties that can be useful as more than just a demonstration.
