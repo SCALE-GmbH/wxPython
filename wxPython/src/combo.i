@@ -1137,6 +1137,8 @@ optionally associating some data object with the item.", "");
 //---------------------------------------------------------------------------
 
 %init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
     // Map renamed classes back to their common name for OOR
     wxPyPtrTypeMap_Add("wxComboCtrl", "wxPyComboCtrl");
     wxPyPtrTypeMap_Add("wxComboPopup", "wxPyComboPopup");

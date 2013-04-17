@@ -46,3 +46,8 @@ MAKE_CONST_WXSTRING_NOSWIG(PanelNameStr);
 %include _printfw.i
 
 //---------------------------------------------------------------------------
+
+%init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
+%}

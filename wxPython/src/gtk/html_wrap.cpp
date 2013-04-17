@@ -20798,6 +20798,8 @@ SWIGEXPORT void SWIG_init(void) {
   PyDict_SetItemString(d, "wxEVT_COMMAND_HTML_CELL_HOVER", PyInt_FromLong(wxEVT_COMMAND_HTML_CELL_HOVER));
   PyDict_SetItemString(d, "wxEVT_COMMAND_HTML_LINK_CLICKED", PyInt_FromLong(wxEVT_COMMAND_HTML_LINK_CLICKED));
   
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
   wxPyPtrTypeMap_Add("wxHtmlTagHandler",    "wxPyHtmlTagHandler");
   wxPyPtrTypeMap_Add("wxHtmlWinTagHandler", "wxPyHtmlWinTagHandler");
   wxPyPtrTypeMap_Add("wxHtmlWindow",        "wxPyHtmlWindow");

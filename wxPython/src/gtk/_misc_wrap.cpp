@@ -42530,5 +42530,9 @@ SWIGEXPORT void SWIG_init(void) {
   PyDict_SetItemString(d, "wxEVT_POWER_SUSPENDED", PyInt_FromLong(wxEVT_POWER_SUSPENDED));
   PyDict_SetItemString(d, "wxEVT_POWER_SUSPEND_CANCEL", PyInt_FromLong(wxEVT_POWER_SUSPEND_CANCEL));
   PyDict_SetItemString(d, "wxEVT_POWER_RESUME", PyInt_FromLong(wxEVT_POWER_RESUME));
+  
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
+  
 }
 

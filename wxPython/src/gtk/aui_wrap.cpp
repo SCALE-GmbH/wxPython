@@ -28156,5 +28156,9 @@ SWIGEXPORT void SWIG_init(void) {
   PyDict_SetItemString(d, "wxEVT_COMMAND_AUITOOLBAR_RIGHT_CLICK", PyInt_FromLong(wxEVT_COMMAND_AUITOOLBAR_RIGHT_CLICK));
   PyDict_SetItemString(d, "wxEVT_COMMAND_AUITOOLBAR_MIDDLE_CLICK", PyInt_FromLong(wxEVT_COMMAND_AUITOOLBAR_MIDDLE_CLICK));
   PyDict_SetItemString(d, "wxEVT_COMMAND_AUITOOLBAR_BEGIN_DRAG", PyInt_FromLong(wxEVT_COMMAND_AUITOOLBAR_BEGIN_DRAG));
+  
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
+  
 }
 

@@ -71,6 +71,8 @@ enum wxTextCtrlHitTestResult;
 //----------------------------------------------------------------------
 
 %init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
     wxRichTextModuleInit();
 %}
 

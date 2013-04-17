@@ -42794,6 +42794,8 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_Python_SetConstant(d, "RendererVersion_Current_Version",SWIG_From_int(static_cast< int >(wxRendererVersion::Current_Version)));
   SWIG_Python_SetConstant(d, "RendererVersion_Current_Age",SWIG_From_int(static_cast< int >(wxRendererVersion::Current_Age)));
   
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
   // Work around a chicken/egg problem in drawlist.cpp
   wxPyDrawList_SetAPIPtr();
   

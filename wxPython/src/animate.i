@@ -268,3 +268,7 @@ public:     // extended API specific to this implementation of wxAnimateCtrl
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
 
+%init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
+%}

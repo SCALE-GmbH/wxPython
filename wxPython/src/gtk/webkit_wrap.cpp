@@ -6040,6 +6040,8 @@ SWIGEXPORT void SWIG_init(void) {
   PyDict_SetItemString(d, "wxEVT_WEBKIT_BEFORE_LOAD", PyInt_FromLong(wxEVT_WEBKIT_BEFORE_LOAD));
   PyDict_SetItemString(d, "wxEVT_WEBKIT_NEW_WINDOW", PyInt_FromLong(wxEVT_WEBKIT_NEW_WINDOW));
   
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
   
   
 }

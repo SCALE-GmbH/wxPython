@@ -994,3 +994,7 @@ public:
 //---------------------------------------------------------------------------
 
 
+%init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
+%}

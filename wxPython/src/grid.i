@@ -2331,6 +2331,8 @@ EVT_GRID_CMD_COL_MOVE =            wx.PyEventBinder( wxEVT_GRID_COL_MOVE,       
 //---------------------------------------------------------------------------
 
 %init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
 %}
 
 //---------------------------------------------------------------------------

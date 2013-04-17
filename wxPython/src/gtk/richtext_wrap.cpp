@@ -33908,6 +33908,8 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_Python_SetConstant(d, "RICHTEXT_PAGE_CENTRE",SWIG_From_int(static_cast< int >(wxRICHTEXT_PAGE_CENTRE)));
   SWIG_Python_SetConstant(d, "RICHTEXT_PAGE_RIGHT",SWIG_From_int(static_cast< int >(wxRICHTEXT_PAGE_RIGHT)));
   
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
   wxRichTextModuleInit();
   
 }

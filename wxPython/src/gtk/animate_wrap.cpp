@@ -5389,5 +5389,9 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_Python_SetConstant(d, "AC_NO_AUTORESIZE",SWIG_From_int(static_cast< int >(wxAC_NO_AUTORESIZE)));
   SWIG_Python_SetConstant(d, "AC_DEFAULT_STYLE",SWIG_From_int(static_cast< int >(wxAC_DEFAULT_STYLE)));
   SWIG_Python_SetConstant(d, "AN_FIT_ANIMATION",SWIG_From_int(static_cast< int >(wxAN_FIT_ANIMATION)));
+  
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
+  
 }
 

@@ -67,3 +67,8 @@ MAKE_CONST_WXSTRING_NOSWIG(ControlNameStr);
 
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------
+
+%init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
+%}

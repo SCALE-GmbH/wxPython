@@ -52,6 +52,8 @@ MAKE_CONST_WXSTRING_NOSWIG(EmptyString);
 
 //---------------------------------------------------------------------------
 %init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
     // Work around a chicken/egg problem in drawlist.cpp
     wxPyDrawList_SetAPIPtr();
 %}

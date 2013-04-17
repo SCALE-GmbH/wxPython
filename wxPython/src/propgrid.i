@@ -1220,6 +1220,8 @@ PG_DATE_PICKER_STYLE = "PickerStyle"
 //---------------------------------------------------------------------------
 
 %init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
     wxPGInitResourceModule();
 %}
 

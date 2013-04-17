@@ -10358,6 +10358,8 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_Python_SetConstant(d, "XMLDOC_NONE",SWIG_From_int(static_cast< int >(wxXMLDOC_NONE)));
   SWIG_Python_SetConstant(d, "XMLDOC_KEEP_WHITESPACE_NODES",SWIG_From_int(static_cast< int >(wxXMLDOC_KEEP_WHITESPACE_NODES)));
   
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
   
   wxXmlInitResourceModule();
   wxXmlResource::Get()->InitAllHandlers();

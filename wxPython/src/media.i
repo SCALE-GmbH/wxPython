@@ -269,6 +269,8 @@ EVT_MEDIA_PAUSE          = wx.PyEventBinder( wxEVT_MEDIA_PAUSE, 1)
 //---------------------------------------------------------------------------
 
 %init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
 %}
 
 //---------------------------------------------------------------------------

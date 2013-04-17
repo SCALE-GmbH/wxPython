@@ -35261,5 +35261,9 @@ SWIGEXPORT void SWIG_init(void) {
   
   wxPyPtrTypeMap_Add("wxPrintout", "wxPyPrintout");
   
+  
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
+  
 }
 

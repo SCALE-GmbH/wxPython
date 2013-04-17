@@ -52170,5 +52170,9 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_addvarlink(SWIG_globals(),(char*)"SearchCtrlNameStr",SearchCtrlNameStr_get, SearchCtrlNameStr_set);
   PyDict_SetItemString(d, "wxEVT_COMMAND_SEARCHCTRL_CANCEL_BTN", PyInt_FromLong(wxEVT_COMMAND_SEARCHCTRL_CANCEL_BTN));
   PyDict_SetItemString(d, "wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN", PyInt_FromLong(wxEVT_COMMAND_SEARCHCTRL_SEARCH_BTN));
+  
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
+  
 }
 

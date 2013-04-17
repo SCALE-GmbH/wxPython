@@ -9399,6 +9399,8 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_Python_SetConstant(d, "ODCB_PAINTING_CONTROL",SWIG_From_int(static_cast< int >(wxODCB_PAINTING_CONTROL)));
   SWIG_Python_SetConstant(d, "ODCB_PAINTING_SELECTED",SWIG_From_int(static_cast< int >(wxODCB_PAINTING_SELECTED)));
   
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
   // Map renamed classes back to their common name for OOR
   wxPyPtrTypeMap_Add("wxComboCtrl", "wxPyComboCtrl");
   wxPyPtrTypeMap_Add("wxComboPopup", "wxPyComboPopup");

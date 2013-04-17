@@ -1867,6 +1867,8 @@ public:
 
 //---------------------------------------------------------------------------
 %init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
     wxPyPtrTypeMap_Add("wxHtmlTagHandler",    "wxPyHtmlTagHandler");
     wxPyPtrTypeMap_Add("wxHtmlWinTagHandler", "wxPyHtmlWinTagHandler");
     wxPyPtrTypeMap_Add("wxHtmlWindow",        "wxPyHtmlWindow");

@@ -52,3 +52,8 @@ MAKE_CONST_WXSTRING_NOSWIG(EmptyString);
 %include _about.i
 
 //---------------------------------------------------------------------------
+
+%init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
+%}

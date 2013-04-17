@@ -6350,6 +6350,8 @@ SWIGEXPORT void SWIG_init(void) {
   PyDict_SetItemString(d,(char*)"cvar", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char*)"CalendarNameStr",CalendarNameStr_get, CalendarNameStr_set);
   
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
   
 }
 

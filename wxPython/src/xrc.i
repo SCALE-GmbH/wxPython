@@ -56,6 +56,8 @@ MAKE_CONST_WXSTRING2(AnimationString,  wxT("animation"));
 //---------------------------------------------------------------------------
 
 %init %{
+    /* Avoid crashes on first access to core API */
+    wxPyGetCoreAPIPtr();
 
     wxXmlInitResourceModule();
     wxXmlResource::Get()->InitAllHandlers();

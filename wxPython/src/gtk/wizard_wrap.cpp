@@ -7241,6 +7241,8 @@ SWIGEXPORT void SWIG_init(void) {
   PyDict_SetItemString(d, "wxEVT_WIZARD_HELP", PyInt_FromLong(wxEVT_WIZARD_HELP));
   PyDict_SetItemString(d, "wxEVT_WIZARD_FINISHED", PyInt_FromLong(wxEVT_WIZARD_FINISHED));
   
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
   
 }
 

@@ -5383,6 +5383,8 @@ SWIGEXPORT void SWIG_init(void) {
   PyDict_SetItemString(d, "wxEVT_MEDIA_PLAY", PyInt_FromLong(wxEVT_MEDIA_PLAY));
   PyDict_SetItemString(d, "wxEVT_MEDIA_PAUSE", PyInt_FromLong(wxEVT_MEDIA_PAUSE));
   
+  /* Avoid crashes on first access to core API */
+  wxPyGetCoreAPIPtr();
   
 }
 
