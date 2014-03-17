@@ -4265,10 +4265,6 @@ void wxWindowGTK::SetScrollbar(int orient,
         thumbVisible = 1;
     }
 
-    if (pos > range - thumbVisible)
-        pos = range - thumbVisible;
-    if (pos < 0)
-        pos = 0;
     GtkAdjustment * const adj = sb->adjustment;
     adj->step_increment = 1;
     adj->page_increment =
@@ -4290,10 +4286,6 @@ void wxWindowGTK::SetScrollPos(int orient, int pos, bool WXUNUSED(refresh))
     {
         GtkAdjustment* adj = sb->adjustment;
         const int max = int(adj->upper - adj->page_size);
-        if (pos > max)
-            pos = max;
-        if (pos < 0)
-            pos = 0;
         m_scrollPos[dir] = adj->value = pos;
 
         g_signal_handlers_disconnect_by_func( m_scrollBar[dir],
