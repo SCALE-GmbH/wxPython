@@ -3147,9 +3147,10 @@ bool wxWindowGTK::Enable( bool enable )
         return false;
     }
 
-    gtk_widget_set_sensitive( m_widget, enable );
     if ( m_wxwindow )
         gtk_widget_set_sensitive( m_wxwindow, enable );
+    else
+        gtk_widget_set_sensitive( m_widget, enable );
 
     wxWindowNotifyEnable(this, enable);
 
