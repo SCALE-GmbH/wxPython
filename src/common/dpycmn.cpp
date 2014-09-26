@@ -238,7 +238,7 @@ bool wxDisplay::ChangeMode(const wxVideoMode& mode)
 int wxDisplayFactory::GetFromWindow(wxWindow *window)
 {
     // consider that the window belongs to the display containing its centre
-    const wxRect r(window->GetRect());
+    const wxRect r(window->GetScreenRect());
     return GetFromPoint(wxPoint(r.x + r.width/2, r.y + r.height/2));
 }
 
