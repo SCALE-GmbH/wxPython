@@ -195,9 +195,12 @@ LRESULT APIENTRY _EXPORT wxTimerWndProc(HWND hWnd, UINT message,
     {
         wxTimerMap::iterator node = TimerMap().find((unsigned long)wParam);
 
-        wxCHECK_MSG( node != TimerMap().end(), 0, wxT("bogus timer id in wxTimerProc") );
+        // Check if the id still exists. If KillTimer was called, we could still
+        // receive pending timer events for that wx.Timer afterwards.
 
-        wxProcessTimer(*(node->second));
+        if ( node != TimerMap().end() ) {
+            wxProcessTimer(*(node->second));
+        }
     }
     else
     {
