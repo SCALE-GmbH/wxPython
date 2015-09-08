@@ -1728,7 +1728,8 @@ bool wxWindowGTK::DoPopupMenu( wxMenu *menu, int x, int y )
     // it is possible for gtk_menu_popup() to fail
     if (!gtk_widget_get_visible(GTK_WIDGET(menu->m_menu)))
     {
-        menu->m_popupShown = false;
+        wxMenuEvent eventClose(wxEVT_MENU_CLOSE, -1, menu);
+        DoCommonMenuCallbackCode(menu, eventClose);
         return false;
     }
 
