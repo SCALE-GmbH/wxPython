@@ -1725,6 +1725,13 @@ bool wxWindowGTK::DoPopupMenu( wxMenu *menu, int x, int y )
                   gtk_get_current_event_time()
                 );
 
+    // it is possible for gtk_menu_popup() to fail
+    if (!gtk_widget_get_visible(GTK_WIDGET(menu->m_menu)))
+    {
+        menu->m_popupShown = false;
+        return false;
+    }
+
     while (is_waiting)
     {
         gtk_main_iteration();
