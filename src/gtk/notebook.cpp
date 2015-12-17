@@ -395,6 +395,15 @@ wxGtkNotebookPage* wxNotebook::GetNotebookPage( int page ) const
     return m_pagesData.Item(page)->GetData();
 }
 
+/* Check if win or one of its child windows has the focus. */
+static bool in_focus(wxWindow *window)
+{
+    wxWindow *focus_window = wxWindow::FindFocus();
+    while (focus_window && window != focus_window)
+        focus_window = focus_window->GetParent();
+    return focus_window == window;
+}
+
 int wxNotebook::DoSetSelection( size_t page, int flags )
 {
     wxCHECK_MSG( m_widget != NULL, -1, wxT("invalid notebook") );
@@ -416,7 +425,7 @@ int wxNotebook::DoSetSelection( size_t page, int flags )
     }
 
     wxNotebookPage *client = GetPage(page);
-    if ( client )
+    if ( client && in_focus(this) )
         client->SetFocus();
 
     return selOld;
