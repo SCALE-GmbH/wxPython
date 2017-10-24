@@ -33,6 +33,7 @@
     #include "wx/dynarray.h"
     #include "wx/app.h"
     #include "wx/frame.h"
+    #include "wx/module.h"
 #endif
 
 #include "wx/dynload.h"
@@ -92,6 +93,32 @@ static const wxChar displayDllName[] = _T("coredll.dll");
 #else
 static const wxChar displayDllName[] = _T("user32.dll");
 #endif
+
+
+LRESULT APIENTRY _EXPORT wxDisplayWndProc(HWND hWnd, UINT message,
+                                          WPARAM wParam, LPARAM lParam);
+
+// implemented in utils.cpp
+extern "C" WXDLLIMPEXP_BASE HWND
+wxCreateHiddenWindow(LPCTSTR *pclassname, LPCTSTR classname, WNDPROC wndproc);
+
+
+class wxDisplayHiddenWindowModule : public wxModule
+{
+public:
+    virtual bool OnInit();
+    virtual bool OnExit();
+    static void SetupHiddenWindow();
+
+private:
+    static HWND ms_hwnd;
+    static const wxChar *ms_className;
+
+    DECLARE_DYNAMIC_CLASS(wxDisplayHiddenWindowModule)
+};
+
+IMPLEMENT_DYNAMIC_CLASS(wxDisplayHiddenWindowModule, wxModule)
+
 
 // ----------------------------------------------------------------------------
 // typedefs for dynamically loaded Windows functions
@@ -386,6 +413,53 @@ private:
 #endif // wxUSE_DIRECTDRAW
 
 
+
+HWND wxDisplayHiddenWindowModule::ms_hwnd = NULL;
+const wxChar *wxDisplayHiddenWindowModule::ms_className = NULL;
+
+bool wxDisplayHiddenWindowModule::OnInit()
+{
+    ms_hwnd = NULL;
+    ms_className = NULL;
+    return true;
+}
+
+void wxDisplayHiddenWindowModule::OnExit()
+{
+    if (ms_hwnd) {
+        if (!::DestroyWindow(ms_hwnd))
+            wxLogLastError(_T("DestroyWindow(wxDisplayHiddenWindow)"));
+        ms_hwnd = NULL;
+    }
+
+    if (ms_className) {
+        if (!::UnregisterClass(ms_className, wxGetInstance()))
+            wxLogLastError(_T("UnregisterClass(wxDisplayHiddenWindow)"));
+        ms_className = NULL;
+    }
+}
+
+void wxDisplayHiddenWindowModule::SetupHiddenWindow()
+{
+    static const wxChar *HIDDEN_WINDOW_CLASS = _T("wxDisplayHiddenWindow");
+    if (!ms_hwnd) {
+        ms_hwnd = wxCreateHiddenWindow(&ms_className, HIDDEN_WINDOW_CLASS,
+                                       wxDisplayWndProc);
+    }
+}
+
+
+LRESULT APIENTRY _EXPORT wxDisplayWndProc(HWND hWnd, UINT message,
+                                          WPARAM wParam, LPARAM lParam)
+{
+    if (message == WM_SETTINGCHANGE) {
+        // TODO: Connect to Display Factory
+        return 0;
+    }
+    return ::DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+
 // ============================================================================
 // common classes implementation
 // ============================================================================
@@ -611,6 +685,8 @@ wxDisplayFactoryMultimon::wxDisplayFactoryMultimon()
         if ( !pfnEnumDisplayMonitors )
             return;
     }
+
+    wxDisplayHiddenWindowModule::SetupHiddenWindow();
 
     // enumerate all displays
     if ( !pfnEnumDisplayMonitors(NULL, NULL, MultimonEnumProc, (LPARAM)this) )
