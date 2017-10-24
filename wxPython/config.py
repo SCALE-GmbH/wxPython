@@ -27,12 +27,20 @@ EGGing = 'bdist_egg' in sys.argv or 'egg_info' in sys.argv
 if not EGGing:
     from distutils.core import setup, Extension
 else:
-    # EXPERIMENTAL Egg support...
+    # Hack around the problem that a calendar.py file exists in the same
+    # folder as config.py and setuptools indirectly imports a calendar
+    # module (without absolute imports).
+
+    # This temporarily drops our folder from sys.path so that setuptools
+    # can be imported. I'd rather not mess with the wxPython build as
+    # a whole...  -- Torsten
+
+    saved_path = sys.path
     try:
+        sys.path = [p for p in sys.path if p != os.path.dirname(__file__)]
         from setuptools import setup, Extension
-    except ImportError:
-        print "Setuptools must be installed to build an egg"
-        sys.exit(1)
+    finally:
+        sys.path = saved_path
 
 from distutils.file_util import copy_file
 from distutils.dir_util  import mkpath
