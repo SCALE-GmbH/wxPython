@@ -107,7 +107,7 @@ class wxDisplayHiddenWindowModule : public wxModule
 {
 public:
     virtual bool OnInit();
-    virtual bool OnExit();
+    virtual void OnExit();
     static void SetupHiddenWindow();
 
 private:
